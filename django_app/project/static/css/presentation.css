@@ -1,0 +1,55 @@
+.errorlist {
+  list-style: none;
+  color: #f00;
+  margin-bottom: 0px;
+}
+.button,
+button {
+  background-color: #005212;
+  border: 0px;
+  -webkit-box-shadow: 0 0 0;
+  box-shadow: 0 0 0;
+  -webkit-border-radius: 7px 7px 7px 7px;
+  border-radius: 7px 7px 7px 7px;
+}
+.button:hover,
+button:hover,
+.button:focus,
+button:focus {
+  background-color: #2e8947;
+}
+.button.secondary,
+button.secondary {
+  color: #005212;
+}
+a {
+  color: #005212;
+}
+a:hover {
+  color: #2e8947;
+}
+.side-nav li a {
+  display: block;
+  color: #005212;
+}
+.label {
+  background-color: #005212;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+#logo {
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+#like,
+#views {
+  font-size: 2em;
+}
+.comment .btn-delete-comment {
+  visibility: hidden;
+}
+.comment:hover .btn-delete-comment {
+  float: right;
+  color: #a02e2e;
+  visibility: visible;
+}

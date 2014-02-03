@@ -1,0 +1,326 @@
+@import 'base'
+
+/*Variables*/
+$c_selected_object = #0f6d2e
+$c_hover_object = #888a85
+$panel_color = rgba(0,0,0,0.8)
+
+/*Mixins*/
+hoverSlide()
+	border 6px dotted $primary_color
+	cursor move
+
+hoverComponent()
+	border 1px dotted $c_hover_object
+	cursor pointer
+	
+selectedSlide()
+	border 6px solid $primary_color	
+
+selectedComponent()
+	border 1px solid $c_hover_object
+	
+iconBtn()
+	padding 0px 10px 0px 10px
+	line-height 0px
+	color $primary_color
+	z-index 1
+	
+optionsPanel()
+	margin-left 20%
+	margin-right 20%
+	background-color $panel_color
+	border-radius 0px 0px 10px 10px
+	z-index 1
+	
+	.button
+		background-color $secondary_color
+		border-radius 5px
+		float left
+		margin-left 6px
+		margin-right 6px
+		margin-top 8px
+		margin-bottom 8px
+		font-size 2.4em
+		padding-left 10px
+		padding-right 10px
+		padding-top 2px
+		padding-bottom 2px	
+	
+body
+	color $primary_color
+
+.non-selectable-text
+	user-select none
+
+#slides-bar
+	position absolute
+	overflow auto
+	float left
+	width 10%
+	height 100%
+	user-select none
+	background-color $panel_color
+	z-index 1
+
+	#slides-list
+		list-style none
+		margin-top 6px
+		margin-left 3px
+		margin-right 3px		
+
+		.slide-mini
+			height 90px
+			border 1px solid #000
+			margin-bottom 15px	
+			border-radius 8px
+			
+			&.selected
+				border 3px solid $primary_color
+			
+			.btn-delete
+				display none
+			
+			.slide-mini-preview
+				border-radius 8px
+				
+				canvas
+					border-radius 8px
+	
+			&:hover
+				border 3px solid $primary_color
+				
+				.btn-delete
+					display block
+					position absolute
+					color #9c3131
+					font-size 1.3em
+
+#btn-add-slide
+	position absolute
+	left 11%;
+	top 1%
+	font-size 4em
+	iconBtn()
+
+#btn-navigation-mode
+	position absolute
+	left 11%;
+	top 12%
+	font-size 4em
+	iconBtn()
+
+#btn-exit-preview-mode
+	position absolute
+	right 2%
+	top 1%
+	z-index 1
+
+#btn-edit-presentation
+	font-size 4em
+	iconBtn()
+
+#btn-delete-slide
+	font-size 4em
+	iconBtn()
+
+#right-panel 
+	position absolute
+	right 0
+	bottom 0
+	height 100%
+	width 15%
+	background-color $panel_color
+	z-index 1	
+	
+	#btn-preview-presentation
+		font-size 5em
+		iconBtn()
+		width 100%
+		margin-top 5%
+		border-radius 12px 0px 0px 12px
+		
+	ul#main-menu
+		li
+			background-color $secondary_color
+			border-radius 12px 0px 0px 12px
+			text-align center
+			padding-top 5%
+			padding-bottom 5%			
+			
+			a
+				font-size 1.6em
+				
+	#collaborators-title
+		color $secondary_color
+	
+	#collaborative
+		#user-list
+			list-style none
+		
+			.user
+				background-color $secondary_color
+				width 15%
+				text-align center
+				font-size 1.3em
+				border-radius 8px
+				float left
+				margin-left 3px
+				margin-right 3px
+		
+		#chat
+			#chat-messages
+				height 145px
+				overflow-y auto
+				
+				#message-list
+					list-style none
+				
+					.message
+						color $secondary_color
+			
+			#chat-form
+				#message-text
+					margin 0px
+					border-radius 8px
+				/*#btn-send-message
+					float right
+					padding 7px*/
+#new-component-box
+	optionsPanel()
+	
+	/*.button
+			background-color $secondary_color
+			border-radius 5px
+			float left
+			margin-left 6px
+			margin-right 6px
+			margin-top 8px
+			margin-bottom 8px
+			font-size 2.4em
+			padding-left 10px
+			padding-right 10px
+			padding-top 2px
+			padding-bottom 2px	*/
+	
+	/*a
+		iconBtn()*/
+
+#toolbox-container
+	optionsPanel()
+	
+	#bold-btn
+		margin-left 35px
+
+	#link-btn
+		margin-left 35px
+
+#slide-options
+	position absolute
+	optionsPanel()
+	
+	#change-size
+		margin-top 3%
+		
+		label
+			color $secondary_color
+			font-weight bold
+	
+	#btn-delete-slide
+		&:hover
+			color #b43636
+		
+
+/*Color picker*/
+#colorpicker 
+	z-index 1
+	position absolute
+	top 30%
+	left 75%
+
+	#picker-wrapper 
+		width 200px
+		height 200px
+		position relative
+
+		#picker-indicator 
+			width 3px
+			height 3px
+			position absolute
+			border 1px solid #fff
+
+	#slider-wrapper 
+		width 30px
+		height 200px
+		position relative
+
+		#slider-indicator 
+			width 100%
+			height 10px
+			position absolute
+			border 1px solid #000
+
+/* Slide */
+.step
+	border 1px dotted #808080
+	
+	&.hoverable
+		&:hover
+			hoverSlide()
+
+	/* When a slide is selected */
+	&.selected
+		selectedSlide()
+	
+	&.borderless
+		border none
+
+/*Component*/
+.component
+	white-space nowrap
+	padding 4px
+	position absolute
+	padding-top 1px
+	padding-left 1px
+	
+	&.hoverable
+		&:hover
+			hoverComponent()
+	
+	/*&:hover
+		hoverComponent()
+		cursor pointer*/
+	
+	.component-options
+		position absolute
+		/*top -110%
+		left -13%*/
+		transform translate(-48px, -12px)
+		z-index 1
+		
+		.btn-edit-text
+			display block
+
+		.btn-delete-component
+			display block
+			
+			&:hover
+				color #b43636
+	
+	.component-text-tools 
+		position absolute
+		top -45px
+		background-color #808080
+		z-index 1
+
+	&.selected-component
+		selectedComponent()
+
+#themes-window
+	#themes-list
+		.theme-item
+			text-align center
+			border 2px solid white
+			
+			&:hover
+				border 2px solid $primary_color

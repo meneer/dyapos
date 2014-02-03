@@ -1,0 +1,59 @@
+{% extends "base_home.html" %}
+
+{% block includes %}
+<link href="{{STATIC_URL}}css/profile.css" rel="stylesheet" />
+<script src="{{STATIC_URL}}js/profile.js"></script>
+{% endblock %}
+
+{% block home_content %}
+{% load i18n %}
+
+<div class="row">
+    <h1>{% trans 'title_profile' %}</h1>
+</div>
+<div class="row">
+    <div class="large-7 columns">
+        <div class="panel">
+            <form method="post" action="{% url 'main.views.users.profile' %}">
+                {% csrf_token %}
+                <label for="first_name">{% trans 'lbl_first_name' %}</label>
+                	{{form.first_name.errors}}
+                	{{form.first_name}}
+                <label for="last_name">{% trans 'lbl_last_name' %}</label>
+                	{{form.last_name.errors}}
+                	{{form.last_name}}
+                <label for="email">{% trans 'lbl_email' %}</label>
+                	{{form.email.errors}}
+                	{{form.email}}
+                {{form.non_field_errors}}
+                <button>
+                    {% trans 'btn_update_profile' %}
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="large-5 columns">
+        <div class="panel">
+            <a href="{% url 'main.views.users.change_password' %}">{% trans 'btn_change_password' %}</a>
+        </div>
+        <div class="panel">
+            <a href="#" data-reveal-id="delete-account-dialog">{% trans 'btn_delete_account' %} <i class="fi-alert"></i></a>
+        </div>    
+    </div>
+</div>
+
+<div id="delete-account-dialog" class="reveal-modal small" data-reveal>
+
+    <div>
+		<p>
+			{% trans 'msg_delete_account' %}
+		</p>
+		<p>
+			<b>{% trans 'msg_delete_account_cannot_be_undone' %}</b>
+		</p>
+        <a id="btn-cancel-delete-account" class="button secondary">{% trans 'btn_cancel_delete_account' %}</a>
+        <a href="{% url 'main.views.users.delete' %}" class="button alert">{% trans 'btn_accept_delete_account' %} <i class="fi-alert"></i></a>
+    </div>
+    <a class="close-reveal-modal">x</a>
+</div>
+{% endblock %}

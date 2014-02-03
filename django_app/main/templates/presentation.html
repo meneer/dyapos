@@ -1,0 +1,184 @@
+{% extends "base_home.html" %}
+
+{% block includes %}
+<!-- <script src="{{STATIC_URL}}js/foundation/foundation.reveal.js"></script> -->
+<link href="{{STATIC_URL}}css/presentation.css" rel="stylesheet" />        
+<script src="{{STATIC_URL}}js/presentation.js"></script>
+{% endblock %}
+
+{% block home_content %}
+{% load i18n %}
+
+<div class="row">
+	<h1>
+		<div id="title" style="display: inline-block;">{{ presentation.name }}</div> 
+		{% if user.is_authenticated and is_owner %}
+		<small>
+			<a href="#" data-reveal-id="rename-modal-box" data-tooltip title="{% trans 'tt_rename' %}">
+			    <div class="label">
+			        <i class="fi-pencil"></i>
+    			    {% trans 'btn_rename' %}			        
+			    </div>
+			</a>
+		</small>
+		{% endif %}
+	</h1>
+	<p>
+		<h3 class="subheader">
+			<div id="description" style="display: inline-block;">{{ presentation.description }}</div> 
+			{% if user.is_authenticated and is_owner %}
+			<small>
+				<a href="#" data-reveal-id="modify-description-modal-box" data-tooltip title="{% trans 'tt_modify_description' %}">
+                    <div class="label">
+                        <i class="fi-pencil"></i>                    
+				        {% trans 'btn_modify_description' %}
+                    </div>
+			    </a>
+			</small>
+			{% endif %}
+		</h3>
+	</p>
+	<p>
+		{% trans "created_date" %}: {{presentation.created_date|date:"M / d / Y" }}
+	</p>
+</div>
+
+<div class="row">
+	<div class="large-3 columns first">
+		<ul class="side-nav">
+			<li>
+				<a href="{% url 'main.views.presentations.view' presentation.key %}" target="blank">{% trans 'link_present' %}</a>
+			</li>
+			<li class="divider"></li>
+			{% if user.is_authenticated and can_edit %}
+			<li>
+				<a href="{% url 'main.views.presentations.edit' presentation.key %}">{% trans 'link_edit' %}</a>
+			</li>
+			<li class="divider"></li>
+			{% endif %}
+			{% if user.is_authenticated %}
+			<li>
+				<a href="{% url 'main.views.presentations.copy' presentation.id %}">{% trans 'link_copy' %}</a>
+			</li>			
+			<li class="divider"></li>
+			{% endif %}
+			{% if user.is_authenticated and is_owner %}
+			<li>
+				<a href="#" data-reveal-id="share-modal-box">{% trans 'link_share' %}</a>
+			</li>
+			<li class="divider"></li>
+			{% endif %}
+			<li>
+				<a href="{% url 'main.views.presentations.download' %}">{% trans 'link_download' %}</a>
+			</li>
+			<li class="divider"></li>
+			<li>
+				<a href="#" data-reveal-id="embed-modal-box">{% trans 'link_embed' %} &lt;iframe&gt;</a>
+			</li>			
+		</ul>
+	</div>
+	<div class="large-9 columns first">
+		<div class="row">
+			<a id="like" class="tip-top" href="{% url 'main.views.presentations.like' presentation.id %}" data-tooltip title="{% trans 'tt_like' %}"><i class="fi-like"></i> </a>
+			{{presentation.num_likes}}
+			<a id="views" href="#"><i class="fi-eye"></i> </a>
+			{{presentation.num_views}}
+			
+		</div>
+		<div class="row">
+			<iframe src="{% url 'main.views.presentations.view' presentation.key %}" width="100%" height="400px"></iframe>			
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<h2>
+	    {% trans 'title_comments' %}
+	    <div class="label">{{ comments|length }}</div>
+	</h2>
+</div>
+
+<div class="row">
+	<div class="large-6 columns">
+		<ul>
+			{% for comment in comments %}
+			<li class="comment">
+				<b><i class="fi-torso"></i> {{ comment.user.first_name }} {{comment.user.last_name}} ({{ comment.published_date }}):</b>
+				{% if is_owner %}
+					<a class="btn-delete-comment" href="{% url 'main.views.comments.delete' comment.id %}" data-tooltip title="{% trans 'delete' %}" >
+						<i class="fi-x"></i>
+					</a>					
+				{% endif %}		
+				<br>
+				{{ comment.comment }}
+				<hr>
+			</li>
+			{% endfor %}
+		</ul>
+		
+		{% if user.is_authenticated %}
+		<form action="{% url 'main.views.comments.comment' %}" method="post">
+			{% csrf_token %}
+			<input type="hidden" name="presentation_id" value="{{ presentation.id }}"/>
+			<label for="comment">{% trans 'lbl_comment' %}</label>
+			{{comment_form.comment.errors}}
+			{{comment_form.comment}}
+			<button>
+				{% trans 'btn_comment' %}
+			</button>
+		</form>
+		{% endif %}
+	</div>
+</div>
+
+<div id="share-modal-box" class="reveal-modal medium" data-reveal>
+    {% include "elements/share_form.html" %}
+	<a class="close-reveal-modal">x</a>
+</div>
+
+<div id="embed-modal-box" class="reveal-modal medium" data-reveal>
+	<h3>{% trans 'title_embed_to_webpage' %}</h3>
+	<div class="row">
+		<div class="large-8 columns first">
+			<div id="embed-code" class="panel">
+				&lt;iframe href="{{ view_url }}" width="<span id="iframe-width-property">640</span>" height="<span id="iframe-height-property">480</span>"&gt;				
+				&lt;/iframe&gt;
+			</div>			
+		</div>		
+		<div class="large-4 columns last">
+			<label>{% trans 'lbl_width' %}</label>
+			<input id="iframe-width" type="number" value="640" min="1" max="3000">
+			<label>{% trans 'lbl_height' %}</label>
+			<input id="iframe-height" type="number" value="480" min="1" max="3000">
+		</div>
+	</div>
+	<a class="close-reveal-modal">x</a>
+</div>
+
+<div id="rename-modal-box" class="reveal-modal small" data-reveal>
+	<h3>{% trans 'title_rename_presentation' %}</h3>
+	<div class="row">	
+		<div class="large-12 columns last">
+			{{rename_form.name}}
+			<a href="#" id="rename-btn" class="button">{% trans 'btn_rename' %}</a>
+		</div>
+	</div>
+	<a class="close-reveal-modal">x</a>
+</div>
+
+<div id="modify-description-modal-box" class="reveal-modal small" data-reveal>
+	<h3>{% trans 'title_modify_description' %}</h3>
+	<div class="row">	
+		<div class="large-12 columns last">
+			{{modify_description_form.description}}
+			<a href="#" id="modify-description-btn" class="button">{% trans 'btn_save' %}</a>
+		</div>
+	</div>
+	<a class="close-reveal-modal">x</a>
+</div>
+
+<script>
+	var presentation_key = "{{presentation.key}}";
+</script>
+
+{% endblock %}

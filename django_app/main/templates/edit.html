@@ -1,0 +1,387 @@
+{% extends "base.html" %}
+
+{% block includes %}
+
+{% load i18n %}
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{{presentation.name}}</title>
+
+<link href="{{STATIC_URL}}css/edit.css" rel="stylesheet" />
+<link id="theme-stylesheet" href="{{STATIC_URL}}css/themes/theme_{{ presentation.theme_id|default:'1' }}.css" rel="stylesheet" />
+
+<script src="{{STATIC_URL}}js/jquery-ui-1.10.3.custom.js"></script>
+<script src="{{STATIC_URL}}js/jquery.ui.touch-punch.js"></script>
+<script src="{{STATIC_URL}}js/underscore.js"></script>
+<script src="{{STATIC_URL}}js/backbone.js"></script>
+<script src="{{STATIC_URL}}js/html2canvas.js"></script>
+<script src="{{STATIC_URL}}js/colorpicker.min.js"></script>
+{% if is_anonymous == False %}
+<script src="{{NODEJS_URL}}/socket.io/socket.io.js"></script>
+<script src="{{STATIC_URL}}js/backbone.iosync.js"></script>
+<script src="{{STATIC_URL}}js/backbone.iobind.js"></script>
+{% endif %}
+<script src="{{STATIC_URL}}js/backbone-relational.js"></script>
+<script src="{{STATIC_URL}}js/editor/impress_custom.js"></script>
+
+<script>
+    var p_id = {{ presentation.id|default:'null' }};
+    var is_anonymous = {{ is_anonymous|yesno:'true,false' }};
+    var user_first_name = "{{ user_data.first_name|default:'null' }}";
+    var user_last_name = "{{ user_data.last_name|default:'null' }}";
+    var user_username = "{{ user_data.username|default:'null' }}";
+    var nodejs_url = "{{ NODEJS_URL|default:'null' }}";
+    var media_url = "{{MEDIA_URL}}";
+    var title_default_text = "{% trans 'btn_new_title' %}";
+    var subtitle_default_text = "{% trans 'btn_new_subtitle' %}";
+    var body_default_text = "{% trans 'btn_new_body' %}";
+</script>
+
+<script data-main="{{STATIC_URL}}js/edit" src="{{STATIC_URL}}js/require.js"></script>
+
+{% endblock %}
+
+{% block content %}
+
+<div id="slides-bar">
+    <ul id="slides-list">
+
+    </ul>
+</div>
+
+<a href="#" id="btn-add-slide" class="button secondary" data-tooltip title="{% trans 'tt_btn_add_slide' %}">
+    <i class="fi-plus"></i>
+</a>
+
+<a href="#" id="btn-navigation-mode" class="button secondary" data-tooltip title="{% trans 'tt_btn_navigation_mode' %}">
+    <i class="fi-thumbnails"></i>
+</a>
+
+<a href="#" id="btn-exit-preview-mode" class="button secondary" data-tooltip title="{% trans 'tt_btn_back_edit_mode' %}" style="display: none;">
+	<i class="fi-arrow-left"></i>	
+	{% trans 'btn_back_edit_mode' %}
+</a>
+
+<div id="right-panel">
+    <div>
+        <a id="btn-preview-presentation" class="button secondary" target="_blank" data-tooltip title="{% trans 'tt_btn_preview' %}"><i class="fi-play-video"></i></a>
+    </div>
+    <ul id="main-menu" class="side-nav">        
+        <li>
+            <a id="themes-btn" href="#" data-reveal-id="themes-window">
+                <i class="fi-eye"></i>
+                {% trans 'themes' %}
+            </a>
+        </li>
+        {% if not is_anonymous %}
+        <li>
+            <a id="share-btn" href="#" data-reveal-id="share-window">
+                <i class="fi-share"></i>
+                {% trans 'share' %}
+                </a>
+        </li>
+        {% endif %}
+        <li>
+            <a id="download-btn" href="{% url 'main.views.presentations.download' %}" target="_blank" >
+                <i class="fi-download"></i>
+                {% trans 'download' %}
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'main.views.pages.home' %}" >
+                <i class="fi-x-circle"></i>
+                {% trans 'exit' %}
+                </a>
+        </li>
+    </ul>
+    
+    <div id="collaborative" style="display: none;">
+        <h4 id="collaborators-title">COLLABORATORS</h4>
+        <div class="row">
+	        <ul id="user-list">
+	    
+	        </ul>        	
+        </div>
+        <div id="chat">
+            <div id="chat-messages">
+                <ul id="message-list">
+    
+                </ul>
+            </div>
+            <div>
+                <form id="chat-form">
+                    <input type="text" id="message-text" autocomplete="off" placeholder="{% trans 'send_message' %}">
+                    <!-- <input id="btn-send-message" class="button secondary" type="submit" value="Send"> -->
+                </form>
+            </div>
+        </div>        
+    </div>
+
+</div>
+
+<div id="slide-options" style="display: none;">
+    <div class="row">
+        
+        <div class="large-3 columns first">
+            <a id="btn-edit-presentation" href="#" class="button secondary" data-tooltip title="{% trans 'tt_btn_edit' %}">
+                <i class="fi-pencil"></i>
+            </a>
+        </div>
+        
+        <div class="large-3 columns">
+            <div id="change-size">
+	            <label>{% trans "lbl_size" %}</label>
+	            <input id="input-scale" type="range" min="0.01" max="2" step="0.005" max="50"/>            	
+            </div>
+        </div>
+        
+        <div class="large-3 columns">            
+            <div id="change-rotation">
+	            <input id="input-rotation-z" name="z" type="range" value="0" min="-180" max="180" data-tooltip title="{% trans 'tt_rotate_z' %}"/>            
+	            <input id="input-rotation-x" name="x" type="range" value="0" min="-180" max="180" data-tooltip title="{% trans 'tt_rotate_x' %}"/>            
+	            <input id="input-rotation-y" name="y" type="range" value="0" min="-180" max="180" data-tooltip title="{% trans 'tt_rotate_y' %}"/>            	
+            </div>            
+        </div>
+        
+        <div class="large-3 columns last">
+            <a id="btn-delete-slide" href="#" class="button secondary" data-tooltip title="{% trans 'tt_btn_delete' %}">
+                <i class="fi-x"></i>        
+            </a>              
+        </div>
+        
+    </div>    
+</div>
+
+<div id="new-component-box" style="display:none;">
+    <div class="row">
+        <a id="btn-add-title" class="button secondary" href="#" data-tooltip title="{% trans 'tt_btn_add_title' %}">
+            + {% trans "btn_title" %}
+        </a>            
+        <a id="btn-add-subtitle" class="button secondary" href="#" data-tooltip title="{% trans 'tt_btn_add_subtitle' %}">
+            + {% trans "btn_subtitle" %}
+        </a>
+        <a id="btn-add-body" class="button secondary" href="#" data-tooltip title="{% trans 'tt_btn_add_paragraph' %}">
+            + {% trans "btn_body" %}
+        </a>            
+        <a id="btn-add-image" class="button secondary" href="#" data-tooltip title="{% trans 'tt_btn_add_image' %}">
+            <i class="fi-photo"></i>
+        </a>            
+        <a id="btn-add-video" class="button secondary" href="#" data-tooltip title="{% trans 'tt_btn_add_video' %}">
+            <i class="fi-social-youtube"></i>
+        </a>                    
+    </div>
+</div>
+
+<div id="toolbox-container" style="display:none;">
+    <div id="toolbox-text" class="toolbox" style="display:none;">                
+        <div class="row">
+                <a id="btn-increase-font" class="button secondary" data-tooltip title="{% trans 'tt_increase_size' %}"> + </a>                
+                <a id="btn-decrease-font" class="button secondary" data-tooltip title="{% trans 'tt_decrease_size' %}"> - </a>
+                <a id="bold-btn" class="button secondary" data-tooltip title="{% trans 'tt_toggle_bold' %}">
+                	<i class="fi-bold"></i>
+                </a>                
+                <a id="underlined-btn" class="button secondary" data-tooltip title="{% trans 'tt_toggle_underline' %}">
+                	<i class="fi-underline"></i>                	
+                </a>                
+                <a id="italic-btn" class="button secondary" data-tooltip title="{% trans 'tt_toggle_italic' %}">
+                	<i class="fi-italic"></i>
+                </a>                
+                <a id="link-btn" class="button secondary" data-tooltip title="{% trans 'tt_transform_to_link' %}">
+                	<i class="fi-link"></i>
+                </a>                
+                <a id="color-btn" class="button secondary" data-tooltip title="{% trans 'tt_change_color' %}">
+                	<i class="fi-paint-bucket"></i>
+                </a>                                                                      
+        </div>
+
+        
+        
+    </div>
+    <div id="toolbox-image" class="toolbox" style="display:none;">
+        <div class="row">
+	        <a id="btn-increase-image-size" class="button secondary" data-tooltip title="{% trans 'tt_increase_size' %}"> + </a>
+	        <a id="btn-decrease-image-size" class="button secondary" data-tooltip title="{% trans 'tt_decrease_size' %}"> - </a>        	
+        </div>
+    </div>
+</div>
+
+<div id="add-image-box" class="reveal-modal small" data-reveal>
+    <form id="form-upload-image" method="post" action="{% url 'main.views.presentations.upload_image' %}" enctype="multipart/form-data">
+    	<h2>{% trans 'title_add_image' %}</h2>
+    	{% if is_anonymous == False %}
+    	<label for="image">{% trans 'lbl_load_image_file' %}</label>
+        <input type="file" id="image" name="image" accept="image/*" />
+        <h5>{% trans 'lbl_or' %}</h5>
+        {% endif %}
+        <label for="image_url">{% trans 'lbl_load_image_url' %}</label>
+        <input type="text" id="image-url" name="image-url" placeholder="http://"/>
+        <input type="button" class="button" id="btn-upload-image" value="{% trans 'btn_upload' %}">
+    </form>
+    <div id="image-preview">
+    	
+    </div>
+    <a class="close-reveal-modal">x</a>
+</div>
+
+<div id="add-video-box" class="reveal-modal small" data-reveal>
+    <h2>{% trans 'title_add_video' %}</h2>
+    <label>URL</label>
+    <input type="text" id="video-link">
+    <input type="button" class="button" id="btn-add-video-link" value="{% trans 'btn_add' %}">
+    <a class="close-reveal-modal">x</a>
+</div>
+
+<div id="add-link-box" class="reveal-modal small" data-reveal>
+    <input type="text" id="text-link">
+    <input id="btn-add-text-link" class="button" type="button" value="{% trans 'btn_add' %}">
+    <a class="close-reveal-modal">x</a>
+</div>
+
+<div id="themes-window" class="reveal-modal small" data-reveal>
+    <ul id="themes-list" class="large-block-grid-2">
+    	
+    </ul>
+    <a class="close-reveal-modal">x</a>
+</div>
+
+{% if not is_anonymous %}
+<div id="share-window" class="reveal-modal medium" data-reveal>
+    {% include "elements/share_form.html" %}
+    <a class="close-reveal-modal">x</a>
+</div>
+{% endif %}
+
+<div id="colorpicker" style="display:none;">
+    <div id="picker-wrapper" style="display:inline-block;">
+        <div id="picker">
+
+        </div>
+        <div id="picker-indicator">
+
+        </div>
+    </div>
+    <div id="slider-wrapper" style="display:inline-block;">
+        <div id="slider">
+
+        </div>
+        <div id="slider-indicator">
+
+        </div>
+    </div>
+    <br>
+    <button id="btn-color-cancel">
+        {% trans 'btn_cancel' %}
+    </button>
+    <button id="btn-color-ok">
+        OK
+    </button>
+</div>
+
+<div id="impress">
+    <div id="slides">
+
+    </div>
+</div>
+
+<!-- Templates -->
+
+<script id="template-slide" type="text/mustache">
+    <div class="step" id="[[id]]" data-x="[[data-x]]" data-y="[[data-y]]" data-scale="[[data-scale]]" data-rotate-z="[[data-rotate-z]]" data-rotate-x="[[data-rotate-x]]" data-rotate-y="[[data-rotate-y]]">
+    </div>
+</script>
+
+<script id="template-slide-mini" type="text/mustache">
+    <li class='slide-mini tip-right' id="slide-[[id]]" data-tooltip title="{% trans 'tt_slide_mini_sort' %}">
+	<a id="delete-[[id]]" class="btn-delete" href="#">
+		<i class="fi-x"></i>
+		</a>    
+    <div class="slide-mini-preview">
+    <!-- Here, the preview canvas is loaded -->
+    </div>
+    </li>
+</script>
+
+<script id="template-text-component" type="text/mustache">
+    <div id='[[cid]]' class="component hoverable" style="[[container_style]]">
+    <div class="component-options" style="display:none;">
+    <a class="btn-edit-text tip-left" data-tooltip title="{% trans 'tt_btn_edit' %}">
+    <i class="fi-pencil"></i>
+    </a>
+    <a class="btn-delete-component tip-left" data-tooltip title="{% trans 'tt_btn_delete' %}">
+    <i class="fi-x"></i>
+    </a>
+    </div>
+    <div class='text [[text_type]] component-preview' style='[[style]]'>
+    <div class="component-content" contenteditable="false">    
+    [[content]]
+    </div>
+    </div>
+    </div>
+</script>
+
+<script id="template-image-component" type="text/mustache">
+    <div id='[[cid]]' class="component hoverable" style="left:30%;top:20%;[[container_style]]">
+    <div class="component-options" style="display:none;">
+    <a class="btn-delete-component tip-left" data-tooltip title="{% trans 'tt_btn_delete' %}">
+    <i class="fi-x"></i>
+    </a>
+    </div>
+    <div class='image component-preview' style='[[style]]'>
+    <img src="
+    [[#url]]
+    	[[url]]
+    [[/url]]
+    [[^url]]
+    	{{STATIC_URL}}img/loading.gif
+    [[/url]]
+    " style="width: 100%; height: 100%;">
+    </div>
+    </div>
+</script>
+
+<script id="template-video-component" type="text/mustache">
+    <div id='[[cid]]' class="component hoverable" style="left:30%;top:20%;[[container_style]]">
+    <div class="component-options" style="display:none;">    
+    <a class="btn-delete-component tip-left" data-tooltip title="{% trans 'tt_btn_delete' %}">
+    <i class="fi-x"></i>
+    </a>
+    </div>    
+    <div class='video component-preview' style='position:relative;padding-bottom:56.25%;padding-top:30px;height:0;overflow:hidden;display:block;'>
+    <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="//[[link]]" frameborder="0" allowfullscreen></iframe>
+    </div>
+    </div>
+</script>
+
+<script id="template-user" type="text/mustache">
+    <li id="user-[[id]]" class="user" data-tooltip title="[[first_name]] [[last_name]]">
+    <i class="fi-torso" style="color:[[color]];"></i>
+    </li>
+</script>
+
+<script id="template-chat-message" type="text/mustache">
+    <li class="message">
+	    <!-- <p> -->
+	        <b>[[first_name]] [[last_name]]:</b> [[message]]    	
+	    <!-- </p> -->
+    </li>
+</script>
+
+<script id="template-theme" type="text/mustache">
+    [[#themes]]        
+		<li class="theme-item">
+            <a id='theme_[[id]]' class="theme-link" href="#">
+	            <iframe src="/theme-preview/[[id]]" frameborder="0" width="200" height="150" scrolling="no"></iframe>
+	            <h4>[[name]]</h4>            	
+            </a>
+	    </li>		
+    [[/themes]]
+</script>
+
+<script id="template-link" type="text/mustache">
+    <a href="[[link]]" class="link" target="_blank">[[content]]</a>    
+</script>
+
+<script id="template-image-preview" type="text/mustache">
+    <img src="[[url]]" width="100" />    
+</script>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% load i18n %}
+
+<ul class="button-group">
+    <li>
+        <a href="{% url 'main.views.pages.home' %}" class="small button secondary" data-tooltip title="{% trans 'tt_home' %}">
+            <i class="fi-home"></i>
+            {% trans 'menu_home' %}
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'main.views.users.profile' %}" class="small button secondary" data-tooltip title="{% trans 'tt_profile' %}">
+            <i class="fi-torso"></i>
+            {% trans 'menu_profile' %}
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'main.views.users.user_logout' %}" class="small button secondary" data-tooltip title="{% trans 'tt_logout' %}">{% trans 'menu_logout' %}</a>
+    </li>
+</ul>

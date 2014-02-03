@@ -1,0 +1,33 @@
+{% extends 'base_home.html' %}
+
+{% block includes %}
+	<link rel="stylesheet" href="{{STATIC_URL}}css/login.css" />
+{% endblock %}
+
+{% block home_content %}
+{% load i18n %}
+
+<div class="row">
+	<div class="large-6 columns">
+	<h2 class="subheader">{% trans 'title_login'%}</h2>
+	<form id="login-form" action="login/" method="post">
+		{% csrf_token %}
+		{{form.non_field_errors}}
+		<label for="email">{% trans 'lbl_email'%}</label>
+		{{form.email.errors}}
+		{{form.email}}
+		<label for="password">{% trans 'lbl_password'%}</label>
+		{{form.password.errors}}
+		{{form.password}}
+		<p>
+			<a href="{% url 'main.views.users.recover_password' %}">{% trans 'link_forgot_password'%}</a>
+		</p>
+		<button type="submit" id="login-button">
+			{% trans 'btn_login'%}
+		</button>
+	</form>
+	{% trans 'txt_dont_have_account' %} <a href="{% url 'main.views.users.signup' %}"><b>{% trans 'link_signup' %}</b></a>
+</div>
+</div>
+
+{% endblock %}

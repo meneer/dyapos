@@ -1,0 +1,84 @@
+.errorlist {
+  list-style: none;
+  color: #f00;
+  margin-bottom: 0px;
+}
+.button,
+button {
+  background-color: #005212;
+  border: 0px;
+  -webkit-box-shadow: 0 0 0;
+  box-shadow: 0 0 0;
+  -webkit-border-radius: 7px 7px 7px 7px;
+  border-radius: 7px 7px 7px 7px;
+}
+.button:hover,
+button:hover,
+.button:focus,
+button:focus {
+  background-color: #2e8947;
+}
+.button.secondary,
+button.secondary {
+  color: #005212;
+}
+a {
+  color: #005212;
+}
+a:hover {
+  color: #2e8947;
+}
+.side-nav li a {
+  display: block;
+  color: #005212;
+}
+.label {
+  background-color: #005212;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+#logo {
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+.side-nav li.active > a:first-child {
+  font-weight: bold;
+  color: #005212;
+}
+.presentation {
+  border: 1px solid #b5adad;
+}
+.presentation .container {
+  height: 120px;
+}
+.presentation .title {
+  position: absolute;
+  font-weight: bold;
+  padding-left: 2%;
+  color: #005212;
+}
+.presentation .options {
+  background-color: rgba(0,0,0,0.45);
+  visibility: hidden;
+}
+.presentation .btn-view {
+  font-size: 2.2em;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.presentation .btn-edit {
+  font-size: 2.2em;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.presentation .btn-delete {
+  font-size: 2.2em;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}

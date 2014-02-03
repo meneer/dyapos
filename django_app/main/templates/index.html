@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+
+{% block includes %}
+<link href="{{STATIC_URL}}css/index.css" rel="stylesheet" />
+<script src="{{STATIC_URL}}js/index.js"></script>
+{% endblock %}
+
+{% block content %}
+{% load i18n %}
+
+<header>
+	<div class="row">
+		<a href="{% url 'main.views.pages.index' %}">
+		<div id="logo" class="large-4 columns"><img src="{{STATIC_URL}}img/logo.png">
+		</div> </a>
+		<div class="large-3 columns"></div>
+		<div class="large-5 columns">
+			{% if not user.is_authenticated %}
+			<a class="button secondary" href="{% url 'main.views.users.user_login' %}">{% trans 'btn_login' %}</a>
+			{% else %}
+			{% include "elements/main_panel.html" %}
+			{% endif %}
+		</div>
+	</div>
+</header>
+
+<div id="main">
+	<div class="row">
+		<div class="large-8 columns">
+			<ul id="welcome" data-orbit data-options="timer_speed:3000;pause_on_hover:false;timer:true;swipe:true;">
+				<li id="slide-welcome">
+					<h2 id="title-welcome">{% trans 'slide_welcome' %}</h2>
+					<img id="icon-welcome" src="{{STATIC_URL}}img/welcome/presentation_logo.png">
+				</li>
+				<li id="slide-create-and-share">
+					<h2 id="title-create-and-share">{% trans 'slide_create_and_share' %}</h2>
+					<img id="icon-create-and-share" src="{{STATIC_URL}}img/welcome/create_and_share.png">
+				</li>
+				<li id="slide-effects">
+					<h2 id="title-effects">{% trans 'slide_effects' %}</h2>
+				</li>
+				<li id="slide-collaborative">
+					<h2 id="title-collaborative">{% trans 'slide_collaborative' %}</h2>
+					<img id="icon-collaborative" src="{{STATIC_URL}}img/welcome/collaborative.png">
+				</li>
+				<li id="slide-html5-css3">
+					<h2 id="title-html5-css3">{% trans 'slide_html5_css3' %}</h2>
+					<img id="icon-html5-css3" src="{{STATIC_URL}}img/welcome/html5_css3.png">
+				</li>
+				<li id="slide-no-flash">
+					<h2 id="title-no-flash">{% trans 'slide_no_flash' %}</h2>
+					<img id="icon-no-flash" src="{{STATIC_URL}}img/welcome/no_flash.png">
+				</li>
+				<li id="slide-any-device">
+					<h2 id="title-any-device">{% trans 'slide_any_device' %}</h2>
+					<img id="icon-any-device" src="{{STATIC_URL}}img/welcome/any_device.png">
+				</li>
+				<li id="slide-download">
+					<h2 id="title-download">{% trans 'slide_download' %}</h2>
+					<img id="icon-download" src="{{STATIC_URL}}img/welcome/download.png">
+				</li>
+			</ul>
+
+		</div>
+		<div class="large-4 columns" style="padding-top: 10%;">
+			<div class="row">
+				<div class="large-10 columns large-centered">
+					<a id="btn-get-started" class="button" href="{% url 'main.views.presentations.edit' %}" data-tooltip title="{% trans 'tt_get_started' %}"> {% trans 'get_started' %} <label>{% trans 'no_registration' %}</label> </a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-2 columns large-centered">
+					<h3>{% trans 'lbl_or' %}</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-8 columns large-centered">
+					<a id="btn-sign-up" class="button secondary" href="{% url 'main.views.users.signup' %}" data-tooltip title="{% trans 'tt_signup' %}">{% trans 'link_signup' %}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="presentations">
+
+	<form id="form-search" action="{% url 'main.views.presentations.search_global' %}" method="post">
+		<div class="row collapse">
+			<div class="large-11 columns first">
+				<input id="input-search" type="text" name="search_text" placeholder="{% trans 'search_presentations' %}">
+			</div>
+			<div class="large-1 columns last">
+				<button id="btn-search" class="postfix">
+					<i class="fi-magnifying-glass"></i>
+				</button>
+			</div>
+		</div>
+	</form>
+
+	<div class="row">
+		<div class="title-result" id="title-featured-presentations">
+			<h2>{% trans "featured_presentations" %}</h2>
+		</div>
+		<div class="title-result" id="title-search-results">
+			<h2>{% trans "search_results" %}</h2>
+		</div>
+		<img src="{{STATIC_URL}}img/loading.gif" id="icon-loading-presentations" width="20%" style="display:none;">
+		<ul id="search-results" class="small-block-grid-2 large-block-grid-3">
+			<!-- search results loaded by AJAX -->
+		</ul>
+	</div>
+</div>
+
+<footer>
+	<div class="row">
+		<div class="large-3 columns">
+			<ul style="list-style: none;">
+				<li>
+					<a href="{% url 'main.views.configs.change_language' 'en' %}"><img src="{{STATIC_URL}}img/flag-icons/gb.png"> English</a>
+				</li>
+				<li>
+					<a href="{% url 'main.views.configs.change_language' 'es'  %}"><img src="{{STATIC_URL}}img/flag-icons/es.png"> Spanish</a>
+				</li>
+				<li>
+					<a href="#" style="color:gray;"><img src="{{STATIC_URL}}img/flag-icons/pt.png"> Portuguese (soon)</a>
+				</li>
+				<li>
+					<a href="#" style="color:gray;"><img src="{{STATIC_URL}}img/flag-icons/fr.png"> French (soon)</a>
+				</li>
+				<li>
+					<a href="#" style="color:gray;"><img src="{{STATIC_URL}}img/flag-icons/it.png"> Italian (soon)</a>
+				</li>
+				<li>
+					<a href="#" style="color:gray;"><img src="{{STATIC_URL}}img/flag-icons/de.png"> German (soon)</a>
+				</li>
+			</ul>
+		</div>
+		<div class="large-4 columns"></div>
+		<div class="large-5 columns">
+			<a id="collaborate" href="http://github.com/edwardoyarzun/slidr"> {% trans "collaborate_with_us_on" %} <img src="{{STATIC_URL}}img/github-logo.png" width="150"/> </a>
+		</div>
+	</div>
+</footer>
+
+<!-- Templates -->
+<script id="template-presentation" type="text/mustache">
+	[[#presentations]]
+	<li>
+	<a href="/p/[[key]]">
+	<div class="presentation" style="background-image: url('[[img_url]]'); background-size: 100% 100%;">
+	<div class="container">
+	<h4 class="title">[[name]]</h4>
+	</div>
+	</div>
+	</a>
+	</li>
+	[[/presentations]]
+</script>
+
+{% endblock content %}

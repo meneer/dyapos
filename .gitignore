@@ -1,0 +1,7 @@
+*.pyc
+django_app/Procfile
+django_app/project/settings_prod.py
+nodejs_app/Procfile
+.settings/
+.project
+.pydevproject

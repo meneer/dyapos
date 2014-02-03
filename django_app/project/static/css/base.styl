@@ -1,0 +1,57 @@
+@import 'nib/vendor'
+
+vendor-prefixes = moz webkit o ms official
+
+/* custom colors */
+$primary_color = #005212
+$secondary_color = #e7e7e7
+
+$btn_color = $primary_color
+$btn_hover_color = #2e8947
+$link_color = $primary_color
+$link_hover_color = $btn_hover_color
+
+.errorlist
+	list-style none
+	color red
+	margin-bottom 0px
+
+
+/* Custom foundation overrides */
+
+.button
+button
+	background-color $btn_color
+	border 0px
+	box-shadow 0 0 0
+	border-radius 7px 7px 7px 7px	
+	
+	&:hover
+	&:focus
+		background-color $btn_hover_color
+	
+	&.secondary
+		color $link_color
+
+a
+	color $link_color
+	
+	&:hover
+		color $link_hover_color
+
+.side-nav
+	li
+		a
+			display block
+			color $link_color
+			
+			&:hover
+				buttonHover()
+
+.label
+	background-color $primary_color
+	border-radius 4px
+
+#logo
+	margin-top 1%
+	margin-bottom 2%

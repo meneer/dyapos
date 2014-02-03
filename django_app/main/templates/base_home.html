@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load i18n %}
+<div class="row">
+	<div id="logo" class="large-3 small-6 columns first">
+		<a href="{% url 'main.views.pages.index' %}">
+			<img src="{{STATIC_URL}}img/logo.png" width="100%">
+		</a>
+	</div>
+	<div class="large-4 columns">
+
+	</div>	
+	<div class="large-6 columns last">
+		{% if user.is_authenticated %}
+			{% include "elements/main_panel.html" %}
+		{% endif %}
+	</div>
+</div>  
+
+
+{% block home_content %}
+
+{% endblock %}
+
+{% endblock %}

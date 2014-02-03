@@ -1,0 +1,19 @@
+{
+  "author": "Eduardo Oyarzún",
+  "name": "nodejs_app",
+  "version": "0.0.1",
+  "repository": {
+    "url": "https://github.com/edwardoyarzun/dyapos.git"
+  },
+  "main": "init.js",
+  "dependencies": {
+    "socket.io": ">= 0.9.16",
+    "mongodb": ">= 1.2.8",
+    "backbone.io": ">= 0.4.1"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "0.10.x"
+  }
+}

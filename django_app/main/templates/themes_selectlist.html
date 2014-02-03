@@ -1,0 +1,5 @@
+<ul>
+{% for theme in themes %}
+    <li><a href="{% url 'main.views.themes.select' theme.id %}">{{ theme.name }}</a></li>
+{% endfor %}
+</ul>

@@ -1,0 +1,68 @@
+{% load i18n %}
+<div class="panel">
+    <form action="/share" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="presentation_id" value="{{presentation.id}}"/>
+        {{share_formset.management_form}}
+        <div id="collaborators">
+            {% for form in share_formset %}
+            <div class="row" class="collaborator-row">
+                <div class="large-2 columns first">
+                    {% trans 'lbl_email' %}
+                </div>
+                <div class="large-6 columns">
+                    {{form.email}}
+                </div>
+                <div class="large-4 columns">
+                    {{form.permission}}
+                </div>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="large-8 columns first"></div>
+            <div class="large-4 columns last">
+                <a id="add-collaborator-btn" class="button small" href="#" data-tooltip title="{% trans 'tt_btn_add_collaborator' %}">{% trans 'btn_add_collaborator' %}</a>
+            </div>
+        </div>
+
+        <!-- Empty dynamic form -->
+        <div id="empty-form" style="display:none">
+            <div class="row" class="collaborator-row">
+                <div class="large-2 columns first">
+                    {% trans 'lbl_email' %}
+                </div>
+                <div class="large-6 columns">
+                    {{share_formset.empty_form.email}}
+                </div>
+                <div class="large-4 columns">
+                    {{share_formset.empty_form.permission}}
+                </div>
+            </div>
+            <hr>
+        </div>
+
+        <button>
+            {% trans 'btn_share' %}
+        </button>
+    </form>
+
+    <script type="text/javascript" charset="utf-8">
+        var addCollaborator = function() {
+            var template = $("#template-collaborator-row").html();
+            var view = Mustache.render(template, {
+                'id' : Math.random()
+            });
+            $("#collaborators").append(view);
+        }
+
+        $("#add-collaborator-btn").on("click", function() {
+            var empty_form = $("#empty-form").html();
+            var total_forms = parseInt($('#id_form-TOTAL_FORMS').val());
+            empty_form = empty_form.replace(/__prefix__/g, total_forms);
+            $('#id_form-TOTAL_FORMS').val(total_forms + 1);
+            $("#collaborators").append(empty_form);
+        });
+    </script>
+</div>

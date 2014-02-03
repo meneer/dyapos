@@ -1,0 +1,34 @@
+[
+	{
+		"model": "main.theme",
+		"pk": 1,
+		"fields": {
+			"name": "Default Theme",
+			"is_custom": 0
+		}
+	},
+	{
+		"model": "main.theme",
+		"pk": 2,
+		"fields": {
+			"name": "Green Theme",
+			"is_custom": 0
+		}
+	},
+	{
+		"model": "main.theme",
+		"pk": 3,
+		"fields": {
+			"name": "Blue Theme",
+			"is_custom": 0
+		}
+	},
+	{
+		"model": "main.theme",
+		"pk": 4,
+		"fields": {
+			"name": "Coffee",
+			"is_custom": 0
+		}
+	}	
+]

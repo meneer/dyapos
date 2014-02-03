@@ -1,0 +1,627 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-01-28 17:27-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: forms/presentation.py:10
+msgid "is_private"
+msgstr "Presentación privada"
+
+#: forms/presentation.py:22
+msgid "option_allow_edit"
+msgstr "Permitir editar"
+
+#: forms/presentation.py:22
+msgid "option_view_only"
+msgstr "Solo visualizar"
+
+#: forms/user.py:21 forms/user.py:74
+msgid "error_passwords_dont_match"
+msgstr "Las contraseñas no coinciden"
+
+#: forms/user.py:25
+msgid "error_email_already_registered"
+msgstr "La dirección de correo electrónico ya está registrada"
+
+#: forms/user.py:43
+msgid "error_user_or_password_incorrect"
+msgstr "Usuario o password incorrecto"
+
+#: forms/user.py:47
+msgid "error_account_not_activated"
+msgstr "La cuenta no está activada"
+
+#: forms/user.py:59
+msgid "error_email_not_registered"
+msgstr "El email no está registrado"
+
+#: templates/change_password.html:11
+msgid "title_change_password"
+msgstr "Cambiar contraseña"
+
+#: templates/change_password.html:19
+msgid "lbl_old_password"
+msgstr "Contraseña antigua"
+
+#: templates/change_password.html:22
+msgid "lbl_new_password"
+msgstr "Contraseña nueva"
+
+#: templates/change_password.html:25
+msgid "lbl_repeat_new_password"
+msgstr "Repetir contraseña"
+
+#: templates/change_password.html:28 templates/profile.html:37
+msgid "btn_change_password"
+msgstr "Cambiar contraseña"
+
+#: templates/edit.html:33
+msgid "btn_new_title"
+msgstr "Nuevo título"
+
+#: templates/edit.html:34
+msgid "btn_new_subtitle"
+msgstr "Nuevo subtítulo"
+
+#: templates/edit.html:35
+msgid "btn_new_body"
+msgstr "Nuevo párrafo"
+
+#: templates/edit.html:50
+msgid "tt_btn_add_slide"
+msgstr "Agregar diapositiva"
+
+#: templates/edit.html:54
+msgid "tt_btn_navigation_mode"
+msgstr "Modo navegación"
+
+#: templates/edit.html:58
+msgid "tt_btn_back_edit_mode"
+msgstr "Volver a modo edición"
+
+#: templates/edit.html:60
+msgid "btn_back_edit_mode"
+msgstr "Back"
+
+#: templates/edit.html:65
+msgid "tt_btn_preview"
+msgstr "Previsualizar presentación"
+
+#: templates/edit.html:71
+msgid "themes"
+msgstr "Temas"
+
+#: templates/edit.html:78
+msgid "share"
+msgstr "Compartir"
+
+#: templates/edit.html:84
+msgid "download"
+msgstr "Descargar"
+
+#: templates/edit.html:91
+msgid "exit"
+msgstr "Salir"
+
+#: templates/edit.html:111
+msgid "send_message"
+msgstr "Enviar mensaje"
+
+#: templates/edit.html:124 templates/edit.html.py:305 templates/home.html:90
+msgid "tt_btn_edit"
+msgstr "Editar"
+
+#: templates/edit.html:131
+msgid "lbl_size"
+msgstr "Tamaño"
+
+#: templates/edit.html:138
+msgid "tt_rotate_z"
+msgstr "Rotar en el eje Z"
+
+#: templates/edit.html:139
+msgid "tt_rotate_x"
+msgstr "Rotar en el eje X"
+
+#: templates/edit.html:140
+msgid "tt_rotate_y"
+msgstr "Rotar en el eje Y"
+
+#: templates/edit.html:145 templates/edit.html.py:308 templates/edit.html:323
+#: templates/edit.html.py:343 templates/home.html:95
+msgid "tt_btn_delete"
+msgstr "Eliminar"
+
+#: templates/edit.html:155
+msgid "tt_btn_add_title"
+msgstr "Agregar título"
+
+#: templates/edit.html:156
+msgid "btn_title"
+msgstr "Título"
+
+#: templates/edit.html:158
+msgid "tt_btn_add_subtitle"
+msgstr "Agregar subtítulo"
+
+#: templates/edit.html:159
+msgid "btn_subtitle"
+msgstr "Subtítulo"
+
+#: templates/edit.html:161
+msgid "tt_btn_add_paragraph"
+msgstr "Agregar párrafo"
+
+#: templates/edit.html:162
+msgid "btn_body"
+msgstr "Párrafo"
+
+#: templates/edit.html:164
+msgid "tt_btn_add_image"
+msgstr "Agregar imagen"
+
+#: templates/edit.html:167
+msgid "tt_btn_add_video"
+msgstr "Agregar video"
+
+#: templates/edit.html:176 templates/edit.html.py:200
+msgid "tt_increase_size"
+msgstr "Incrementar tamaño"
+
+#: templates/edit.html:177 templates/edit.html.py:201
+msgid "tt_decrease_size"
+msgstr "Reducir tamaño"
+
+#: templates/edit.html:178
+msgid "tt_toggle_bold"
+msgstr "Negrita"
+
+#: templates/edit.html:181
+msgid "tt_toggle_underline"
+msgstr "Subrayado"
+
+#: templates/edit.html:184
+msgid "tt_toggle_italic"
+msgstr "Cursiva"
+
+#: templates/edit.html:187
+msgid "tt_transform_to_link"
+msgstr "Transformar a link"
+
+#: templates/edit.html:190
+msgid "tt_change_color"
+msgstr "Cambiar color"
+
+#: templates/edit.html:208
+msgid "title_add_image"
+msgstr "Agregar imagen"
+
+#: templates/edit.html:210
+msgid "lbl_load_image_file"
+msgstr "Cargar archivo de imagen (.jpg, .png, .gif)"
+
+#: templates/edit.html:212 templates/index.html:76
+msgid "lbl_or"
+msgstr "O"
+
+#: templates/edit.html:214
+msgid "lbl_load_image_url"
+msgstr "Cargar imagen desde URL"
+
+#: templates/edit.html:216
+msgid "btn_upload"
+msgstr "Subir"
+
+#: templates/edit.html:225
+msgid "title_add_video"
+msgstr "Agregar video"
+
+#: templates/edit.html:228 templates/edit.html.py:234
+msgid "btn_add"
+msgstr "Agregar"
+
+#: templates/edit.html:271
+msgid "btn_cancel"
+msgstr "Cancelar"
+
+#: templates/edit.html:292
+msgid "tt_slide_mini_sort"
+msgstr "Arrastrar para cambiar orden"
+
+#: templates/home.html:15
+msgid "tt_btn_create_presentation"
+msgstr "Crear presentación"
+
+#: templates/home.html:17
+msgid "btn_create_new"
+msgstr "Crear nuevo"
+
+#: templates/home.html:21
+msgid "tt_view_all"
+msgstr "Ver todo"
+
+#: templates/home.html:21
+msgid "btn_all"
+msgstr "Todo"
+
+#: templates/home.html:25
+msgid "tt_view_own"
+msgstr "Ver mis propias presentaciones"
+
+#: templates/home.html:25
+msgid "btn_own"
+msgstr "Mis presentaciones"
+
+#: templates/home.html:29
+msgid "tt_view_shared"
+msgstr "Ver presentaciones compartidas"
+
+#: templates/home.html:29
+msgid "btn_shared"
+msgstr "Compartidas"
+
+#: templates/home.html:37
+msgid "lbl_search"
+msgstr "Buscar"
+
+#: templates/home.html:38
+msgid "tt_input_search"
+msgstr "Buscar por nombre"
+
+#: templates/home.html:56
+msgid "lbl_name"
+msgstr "Nombre"
+
+#: templates/home.html:58
+msgid "lbl_description"
+msgstr "Descripción"
+
+#: templates/home.html:58
+msgid "lbl_optional_message"
+msgstr "Opcional"
+
+#: templates/home.html:61
+msgid "tt_private_info"
+msgstr ""
+"Esto hace que la presentación sea visible sólo por usted y usuarios "
+"compartidos"
+
+#: templates/home.html:67
+msgid "btn_create_presentation"
+msgstr "Crear presentación"
+
+#: templates/home.html:85
+msgid "tt_btn_view"
+msgstr "Ver presentación"
+
+#: templates/index.html:19 templates/login.html:26
+msgid "btn_login"
+msgstr "Ingresar"
+
+#: templates/index.html:32
+msgid "slide_welcome"
+msgstr "Bienvenido a una nueva generación de presentaciones digitales!"
+
+#: templates/index.html:36
+msgid "slide_create_and_share"
+msgstr "Crea y comparte presentaciones online"
+
+#: templates/index.html:40
+msgid "slide_effects"
+msgstr "Usa efectos de transiciones como zooming, rotación o 3D"
+
+#: templates/index.html:43
+msgid "slide_collaborative"
+msgstr "Edita en tiempo real con otros usuarios colaborativamente!"
+
+#: templates/index.html:47
+msgid "slide_html5_css3"
+msgstr "Disfruta características HTML5 + CSS3  en tus presentaciones"
+
+#: templates/index.html:51
+msgid "slide_no_flash"
+msgstr "Ya no necesitas más Flash Player"
+
+#: templates/index.html:55
+msgid "slide_any_device"
+msgstr ""
+"Muestra tus presentaciones en cualquier dispositivo desde un navegador web"
+
+#: templates/index.html:59
+msgid "slide_download"
+msgstr "Descarga tus presentaciones y preséntalas offline"
+
+#: templates/index.html:68
+msgid "tt_get_started"
+msgstr ""
+"Abrir el editor como usuario anónimo."
+" Nota: Esta presentación no será guardada en tu cuenta de usuario."
+
+#: templates/index.html:69
+msgid "get_started"
+msgstr "Comenzar"
+
+#: templates/index.html:70
+msgid "no_registration"
+msgstr "No requiere registro"
+
+#: templates/index.html:81
+msgid "tt_signup"
+msgstr "Registrarse, para acceder a características como guardar presentaciones, compartirlas, etc."
+
+#: templates/index.html:81 templates/login.html:29
+msgid "link_signup"
+msgstr "Registrarse"
+
+#: templates/index.html:93
+msgid "search_presentations"
+msgstr "Buscar presentaciones"
+
+#: templates/index.html:105
+msgid "featured_presentations"
+msgstr "Presentaciones destacadas"
+
+#: templates/index.html:108
+msgid "search_results"
+msgstr "Resultados de búsqueda"
+
+#: templates/index.html:135
+msgid "collaborate_with_us_on"
+msgstr "Colabora con nosotros en"
+
+#: templates/login.html:12
+msgid "title_login"
+msgstr "Iniciar sesión"
+
+#: templates/login.html:16 templates/profile.html:25 templates/signup.html:23
+#: templates/elements/share_form.html:11 templates/elements/share_form.html:34
+msgid "lbl_email"
+msgstr "Email"
+
+#: templates/login.html:19 templates/signup.html:26
+msgid "lbl_password"
+msgstr "Contraseña"
+
+#: templates/login.html:23
+msgid "link_forgot_password"
+msgstr "Olvidé contraseña?"
+
+#: templates/login.html:29
+msgid "txt_dont_have_account"
+msgstr "¿No estás registrado aún?"
+
+#: templates/presentation.html:17
+msgid "tt_rename"
+msgstr "Click aquí para renombrar"
+
+#: templates/presentation.html:20 templates/presentation.html.py:163
+msgid "btn_rename"
+msgstr "Renombrar"
+
+#: templates/presentation.html:31
+msgid "tt_modify_description"
+msgstr "Click aquí para modificar descripción"
+
+#: templates/presentation.html:34
+msgid "btn_modify_description"
+msgstr "Modificar descripción"
+
+#: templates/presentation.html:42
+msgid "created_date"
+msgstr "Fecha de creación"
+
+#: templates/presentation.html:50
+msgid "link_present"
+msgstr "Presentar"
+
+#: templates/presentation.html:55
+msgid "link_edit"
+msgstr "Editar"
+
+#: templates/presentation.html:61
+msgid "link_copy"
+msgstr "Copiar"
+
+#: templates/presentation.html:67
+msgid "link_share"
+msgstr "Compartir"
+
+#: templates/presentation.html:72
+msgid "link_download"
+msgstr "Descargar"
+
+#: templates/presentation.html:76
+msgid "link_embed"
+msgstr "Incrustar a "
+
+#: templates/presentation.html:82
+msgid "tt_like"
+msgstr "Me gusta"
+
+#: templates/presentation.html:96
+msgid "title_comments"
+msgstr "Comentarios"
+
+#: templates/presentation.html:108
+msgid "delete"
+msgstr "Eliminar"
+
+#: templates/presentation.html:123
+msgid "lbl_comment"
+msgstr "Comentario"
+
+#: templates/presentation.html:127
+msgid "btn_comment"
+msgstr "Comentar"
+
+#: templates/presentation.html:140
+msgid "title_embed_to_webpage"
+msgstr "Incrustar a página web"
+
+#: templates/presentation.html:149
+msgid "lbl_width"
+msgstr "Ancho"
+
+#: templates/presentation.html:151
+msgid "lbl_height"
+msgstr "Altura"
+
+#: templates/presentation.html:159
+msgid "title_rename_presentation"
+msgstr "Renombrar presentación"
+
+#: templates/presentation.html:170
+msgid "title_modify_description"
+msgstr "Modificar descripción"
+
+#: templates/presentation.html:174
+msgid "btn_save"
+msgstr "Guardar"
+
+#: templates/profile.html:12
+msgid "title_profile"
+msgstr "Perfil"
+
+#: templates/profile.html:19 templates/signup.html:17
+msgid "lbl_first_name"
+msgstr "Nombre"
+
+#: templates/profile.html:22 templates/signup.html:20
+msgid "lbl_last_name"
+msgstr "Apellido"
+
+#: templates/profile.html:30
+msgid "btn_update_profile"
+msgstr "Actualizar perfil"
+
+#: templates/profile.html:40
+msgid "btn_delete_account"
+msgstr "Eliminar cuenta"
+
+#: templates/profile.html:49
+msgid "msg_delete_account"
+msgstr ""
+"¿Está seguro que desea eliminar su cuenta de usuario y todos los datos "
+"relacionados a ella tales como presentaciones, comentarios o perfil?"
+
+#: templates/profile.html:52
+msgid "msg_delete_account_cannot_be_undone"
+msgstr "Advertencia: Esta operación no se podrá revertir"
+
+#: templates/profile.html:54
+msgid "btn_cancel_delete_account"
+msgstr "Cancelar"
+
+#: templates/profile.html:55
+msgid "btn_accept_delete_account"
+msgstr "Eliminar cuenta"
+
+#: templates/recover_password.html:12
+msgid "title_recover_password"
+msgstr "Recuperar contraseña"
+
+#: templates/recover_password.html:20
+msgid "lbl_enter_your_email"
+msgstr "Ingrese su email"
+
+#: templates/recover_password.html:24
+msgid "btn_send_recover_email"
+msgstr "Enviar email de recuperación"
+
+#: templates/signup.html:11
+msgid "title_signup"
+msgstr "Registrarse"
+
+#: templates/signup.html:29
+msgid "lbl_repeat_password"
+msgstr "Repetir contraseña"
+
+#: templates/signup.html:33
+msgid "btn_register"
+msgstr "Registrarse"
+
+#: templates/view.html:16
+msgid "fallback-message"
+msgstr ""
+"<p>Tu navegador <b>no soporta las características requeridas</b> por impress."
+"js, por lo tanto se presentará una versión simplificada de esta presentación."
+"</p><p>Para una mejor experiencia, por favor utilice los navegadores "
+"<b>Chrome</b>, <b>Safari</b> o <b>Firefox</b>.</p>"
+
+#: templates/view.html:100
+msgid "presentation_hint"
+msgstr "Usa la barra espaciadora o las flechas para navegar"
+
+#: templates/view.html:104
+msgid "presentation_hint_touch"
+msgstr "Toca en la izquierda o la derecha de la pantalla para navegar"
+
+#: templates/elements/main_panel.html:5
+msgid "tt_home"
+msgstr "Página de inicio"
+
+#: templates/elements/main_panel.html:7
+msgid "menu_home"
+msgstr "Inicio"
+
+#: templates/elements/main_panel.html:11
+msgid "tt_profile"
+msgstr "Mi perfil"
+
+#: templates/elements/main_panel.html:13
+msgid "menu_profile"
+msgstr "Perfil"
+
+#: templates/elements/main_panel.html:17
+msgid "tt_logout"
+msgstr "Cerrar sesión"
+
+#: templates/elements/main_panel.html:17
+msgid "menu_logout"
+msgstr "Salir"
+
+#: templates/elements/share_form.html:26
+msgid "tt_btn_add_collaborator"
+msgstr "Agregar otro colaborador"
+
+#: templates/elements/share_form.html:26
+msgid "btn_add_collaborator"
+msgstr "Agregar otro"
+
+#: templates/elements/share_form.html:47
+msgid "btn_share"
+msgstr "Compartir"
+
+#: views/presentations.py:195
+msgid "text_copy_of"
+msgstr "Copia de"
+
+#~ msgid "tt_language"
+#~ msgstr "Cambiar idioma"
+
+#~ msgid "menu_language"
+#~ msgstr "Idioma"
+
+#~ msgid "logout"
+#~ msgstr "Cerrar sesión"
+
+#~ msgid "btn_view"
+#~ msgstr "Ver"
+
+#~ msgid "tt_input_permission"
+#~ msgstr "Cambiar permisos del colaborador"

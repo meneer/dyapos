@@ -1,0 +1,39 @@
+{% extends "base_home.html" %}
+
+{% block includes %}
+<link rel="stylesheet" href="{{STATIC_URL}}css/signup.css" type="text/css"/>
+{% endblock includes %}
+
+{% block home_content %}
+{% load i18n %}
+
+<div class="row">
+    <h1>{% trans 'title_signup' %}</h1>       
+</div>
+<div class="row">
+	<form method="post" action="{% url 'main.views.users.signup' %}">
+	    {% csrf_token %}
+	    {{ form.non_field_errors }}
+	    <label for="first_name">{% trans 'lbl_first_name' %}</label>
+		{{form.first_name.errors}}
+		{{form.first_name}}
+	    <label for="last_name">{% trans 'lbl_last_name' %}</label>
+		{{form.last_name.errors}}
+		{{form.last_name}}
+	    <label for="email">{% trans 'lbl_email' %}</label>
+		{{form.email.errors}}
+		{{form.email}}
+	    <label for="password">{% trans 'lbl_password' %}</label>
+		{{form.password.errors}}
+		{{form.password}}
+	    <label for="password_repeat">{% trans 'lbl_repeat_password' %}</label>
+		{{form.password_repeat.errors}}
+		{{form.password_repeat}}
+	    <button>
+	        {% trans 'btn_register' %}
+	    </button>
+	
+	</form>	
+</div>
+
+{% endblock %}

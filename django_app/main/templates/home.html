@@ -1,0 +1,106 @@
+{% extends "base_home.html" %}
+
+{% block includes %}
+<script src="{{STATIC_URL}}js/home.js"></script>
+<link href="{{STATIC_URL}}css/home.css" rel="stylesheet" />
+{% endblock %}
+
+{% block home_content %}
+{% load i18n %}
+
+<div>
+    <div class="row">
+        <div class="large-3 columns">
+            <div class="panel">
+                <a href="#" class="button" data-reveal-id="create-presentation-form" data-tooltip title="{% trans 'tt_btn_create_presentation' %}">
+                    <i class="fi-projection-screen"></i>
+                    {% trans 'btn_create_new' %}
+                </a>
+                <ul class="side-nav">
+                    <li id="all" class="active">
+                        <a href="#" data-tooltip title="{% trans 'tt_view_all' %}">{%trans 'btn_all'%}</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li id="own">
+                        <a href="#" data-tooltip title="{% trans 'tt_view_own' %}">{% trans 'btn_own' %}</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li id="shared">
+                        <a href="#" data-tooltip title="{% trans 'tt_view_shared' %}">{% trans 'btn_shared' %}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="large-9 columns">
+            <div class="row">
+                <form>
+                    <label for="search">{% trans 'lbl_search' %}</label>
+                    <input type="text" id="txt-search" name="search" data-tooltip title="{% trans 'tt_input_search' %}"/>
+                </form>
+            </div>
+            <div class="row">
+                <div class="panel">
+                    <img src="{{STATIC_URL}}img/loading.gif" id="icon-loading-presentations" width="20%" style="display:none;">
+                    <ul id="presentation-list" class="small-block-grid-2 large-block-grid-3">
+                        <!-- Presentation list loaded by AJAX -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="create-presentation-form" class="reveal-modal small" data-reveal>
+    <form id="create-presentation-form" action="{% url 'main.views.presentations.create' %}" method="post">
+        {% csrf_token %}
+        <label for="name">{% trans 'lbl_name' %}</label>
+        {{form.name}}
+        <label for="name">{% trans 'lbl_description' %} ({% trans 'lbl_optional_message' %})</label>
+        {{form.description}}
+        
+		<div data-tooltip title="{% trans 'tt_private_info' %}">
+	        {{form.is_private}}
+	        {{form.is_private.label}}			
+		</div>
+        <hr>
+        <button>
+            {% trans 'btn_create_presentation' %}
+        </button>
+    </form>
+    <a class="close-reveal-modal">x</a>
+</div>
+
+<script id="template-presentation" type="text/mustache">
+	[[#presentations]]
+    <li>
+        <div class="presentation" style="background-image: url('[[img_url]]'); background-size: 100% 100%;">
+            <a href="/p/[[key]]">
+            <div class="container">
+                <h4 class="title">[[name]]</h4>                
+            </div> </a>
+            <div class="options">
+                <input type="hidden" value="[[id]]">
+                <div class="row">
+                    <div class="large-4 columns first">
+                        <a href="/view/[[key]]" class="btn-view tiny button secondary round" data-tooltip title="{% trans 'tt_btn_view' %}">
+                            <i class="fi-eye"></i>
+                        </a>
+                    </div>
+                    <div class="large-4 columns">
+                        <a href="/edit/[[key]]" class="btn-edit tiny button secondary round" data-tooltip title="{% trans 'tt_btn_edit' %}">
+                            <i class="fi-pencil"></i>
+                        </a>
+                    </div>
+                    <div class="large-4 columns last">
+                        <a href="/delete/[[id]]" class="btn-delete tiny button alert round" data-tooltip title="{% trans 'tt_btn_delete' %}">
+                            <i class="fi-x"></i>                            
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    [[/presentations]]
+</script>
+
+{% endblock %}
