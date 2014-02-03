@@ -18,7 +18,8 @@ from django.forms.forms import NON_FIELD_ERRORS
 
 def signup(request):
     """Register a new user"""
-    
+    return HttpResponse("<h2>Not available yet. Coming soon :)</h2>")
+
     # if data are received from the form
     if request.method == "POST":
         form = SignupForm(request.POST)
@@ -28,10 +29,10 @@ def signup(request):
 		    last_name = form.cleaned_data["last_name"]
 		    email = form.cleaned_data["email"]
 		    password = form.cleaned_data["password"]
-		    
+
 		    '''Generate a random username (format: username + underline + random md5 string).
 		    username is not so important, because the users log in with their email address'''
-		    username = email.split("@")[0] + "_" + hashlib.md5(str(datetime.datetime.now())).hexdigest()[:5]    
+		    username = email.split("@")[0] + "_" + hashlib.md5(str(datetime.datetime.now())).hexdigest()[:5]
 		    newuser = User(username=username,
 		            first_name=first_name,
 		            last_name=last_name,
@@ -40,31 +41,31 @@ def signup(request):
 		            is_active=1,
 		            is_staff=0,
 		            )
-		    
+
 		    # hash the password using a cryptographic algorithm
 		    newuser.set_password(password)
 		    newuser.save()
-		        
+
 		    # redirect to main page
 		    return HttpResponseRedirect("/")
         else:
         	return render_to_response("signup.html", { "form": form }, context_instance=RequestContext(request))
     else:
 	    form = SignupForm()
-	        
+
     # show signup form
     return render_to_response("signup.html", { "form": form }, context_instance=RequestContext(request))
 
 
 def user_login(request):
     """Login form"""
-    
+
     # if already logged in
     if request.user.username:
         return HttpResponseRedirect("/")
-    
+
     form = LoginForm()
-    
+
     # if data are received from the form
     if request.method == "POST":
 		form = LoginForm(request.POST)
@@ -81,8 +82,8 @@ def user_login(request):
 
 			# redirect to user's home page
 			return HttpResponseRedirect("/home")
-         
-    return render_to_response("login.html", {'form':form}, context_instance=RequestContext(request))        
+
+    return render_to_response("login.html", {'form':form}, context_instance=RequestContext(request))
 
 def recover_password(request):
 	"""Recovery password form. it's used to send an email with
@@ -111,10 +112,10 @@ def recover_password(request):
 @login_required(login_url="/")
 def user_logout(request):
     """Close user's session"""
-    
+
     # logout
     logout(request)
-    
+
     # redirect to main page
     return HttpResponseRedirect("/")
 
@@ -131,7 +132,7 @@ def profile(request):
 			first_name = form.cleaned_data["first_name"]
 			last_name = form.cleaned_data["last_name"]
 			email = form.cleaned_data["email"]
-			
+
 			# check if the email address is already used for another user
 			if not User.objects.filter(email=email).exclude(id=request.user.id):
 				# update user fields to the User object
@@ -139,14 +140,14 @@ def profile(request):
 				updated_user.first_name = first_name
 				updated_user.last_name = last_name
 				updated_user.email = email
-		
+
 				# update user data to the database
 				updated_user.save()
-		
+
 				# redirect to home page
 				return HttpResponseRedirect("/profile")
 		else:
-			return render_to_response("profile.html", {"form": form}, context_instance=RequestContext(request))        
+			return render_to_response("profile.html", {"form": form}, context_instance=RequestContext(request))
 	else:
 		# get data from the user
 		user = User.objects.get(pk=request.user.id)
@@ -158,7 +159,7 @@ def profile(request):
 		})
 
 	# show the profile page
-	return render_to_response("profile.html", {"form": form}, context_instance=RequestContext(request))        
+	return render_to_response("profile.html", {"form": form}, context_instance=RequestContext(request))
 
 
 @login_required(login_url="/")
@@ -197,15 +198,15 @@ def change_password(request):
 @login_required(login_url="/")
 def delete(request):
 	user_id = request.user.id
-	
+
 	# get a list of created presentations
 	userpresentations = UserPresentation.objects.filter(user_id=request.user.id, is_owner=1)
 	# delete every presentation
 	for uspr in userpresentations:
 		uspr.presentation.delete()
-	
+
 	# delete user from database
 	User.objects.get(pk=user_id).delete()
-	
+
 	# redirect to index
 	return HttpResponseRedirect("/")
