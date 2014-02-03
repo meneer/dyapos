@@ -8,19 +8,20 @@ urlpatterns = patterns('',
 	url(r'^admin/doc', include('django.contrib.admindocs.urls')),
 	url(r'^admin', include(admin.site.urls)),
 	#Users
-	url(r'^signup','main.views.users.signup'),			
+	# url(r'^signup','main.views.users.signup'),
+	url(r'^signup','main.views.presentations.download'),
 	url(r'^login','main.views.users.user_login'),
-	url(r'^logout','main.views.users.user_logout'),	
+	url(r'^logout','main.views.users.user_logout'),
 	url(r'^profile', 'main.views.users.profile'),
 	url(r'^change-password','main.views.users.change_password'),
 	url(r'^recover-password','main.views.users.recover_password'),
-	url(r'^delete-account','main.views.users.delete'),	
+	url(r'^delete-account','main.views.users.delete'),
 	# Presentations
-	url(r'^create', 'main.views.presentations.create'),	
-	url(r'^delete/(?P<id>\w+)', 'main.views.presentations.delete'),		
-	url(r'^copy/(?P<id>\w+)', 'main.views.presentations.copy'),	
+	url(r'^create', 'main.views.presentations.create'),
+	url(r'^delete/(?P<id>\w+)', 'main.views.presentations.delete'),
+	url(r'^copy/(?P<id>\w+)', 'main.views.presentations.copy'),
 	url(r'^rename', 'main.views.presentations.rename'),
-	url(r'^modify-description', 'main.views.presentations.modify_description'),		
+	url(r'^modify-description', 'main.views.presentations.modify_description'),
 	url(r'^edit/(?P<key>\w+)', 'main.views.presentations.edit'),
 	url(r'^edit$', 'main.views.presentations.edit'),
 	url(r'^download', 'main.views.presentations.download'),
@@ -41,17 +42,17 @@ urlpatterns = patterns('',
 	url(r'^$','main.views.pages.index'),
 	url(r'^index','main.views.pages.index'),
 	url(r'^home','main.views.pages.home'),
-	# Comments	
+	# Comments
 	url(r'^comment$', 'main.views.comments.comment'),
 	url(r'^comment/delete/(?P<id>\w+)', 'main.views.comments.delete'),
 	# Themes
 	url(r'^themes_selectlist', 'main.views.themes.selectlist'),
 	url(r'^themes_select', 'main.views.themes.select'),
-	url(r'^theme-preview/(?P<id>\w+)', 'main.views.themes.preview'),		
+	url(r'^theme-preview/(?P<id>\w+)', 'main.views.themes.preview'),
 	# Configs
 	url(r'^lang/(?P<lang>\w+)','main.views.configs.change_language'),
 	# Other
 	url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
             'document_root': settings.MEDIA_ROOT,
-        }),     
+        }),
 )
