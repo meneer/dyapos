@@ -30,13 +30,13 @@ define(["ComponentModel"], function(ComponentModel) {
 				switch(attr_name) {
 					case "pos_x":
 						container_style += "left:" + value + "px;";
-						break
+						break;
 					case "pos_y":
 						container_style += "top:" + value + "px;";
-						break
+						break;
 					case "size":
 						container_style += "width:" + value + "%;";
-						break
+						break;
 				}
 			}
 			data["container_style"] = container_style;

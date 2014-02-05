@@ -1,15 +1,4 @@
-define(["Theme", 
-		"Collaborative", 
-		"Chat", 
-		"Slide", 
-		"Component", 
-		"SlideModel",
-		"ComponentModel", 
-		"ImageComp", 
-		"VideoComp", 
-		"TextEdit", 
-		"Mode"
-		], function(Theme, Collaborative, Chat, Slide, Component, SlideModel, ComponentModel, ImageComp, VideoComp, TextEdit, Mode) {	
+define(["Theme", "Collaborative", "Chat", "Slide", "Component", "SlideModel", "ComponentModel", "ImageComp", "VideoComp", "TextEdit", "Mode"], function(Theme, Collaborative, Chat, Slide, Component, SlideModel, ComponentModel, ImageComp, VideoComp, TextEdit, Mode) {
 
 	ColorPicker.fixIndicators(document.getElementById('slider-indicator'), document.getElementById('picker-indicator'));
 
@@ -31,36 +20,36 @@ define(["Theme",
 		url : "slides",
 		initialize : function() {
 			// this.on("add", function() {
-				// console.log("added new Slide");
-				// if(!is_anonymous){
-					// if ( typeof (this.last().id) == "undefined") {
-						// this.last().save();
-					// }					
-				// }
+			// console.log("added new Slide");
+			// if(!is_anonymous){
+			// if ( typeof (this.last().id) == "undefined") {
+			// this.last().save();
+			// }
+			// }
 			// });
 		},
-		getComponent: function(cid){
-		    for(i=0; i<slides.length; i++){
-		        if(slides.models[i].get("components").get(cid) != undefined){
-		            return slides.models[i].get("components").get(cid);
-		        }
-		    }
-		    
-		    // In case it's not found
-		    return undefined;
+		getComponent : function(cid) {
+			for ( i = 0; i < slides.length; i++) {
+				if (slides.models[i].get("components").get(cid) != undefined) {
+					return slides.models[i].get("components").get(cid);
+				}
+			}
+
+			// In case it's not found
+			return undefined;
 		},
-		getComponentsWhere: function(values){
+		getComponentsWhere : function(values) {
 			var results = new Array();
-		    for(i=0; i<slides.length; i++){
-		    	var result = slides.models[i].get("components").where(values); 
-		        if(result.length > 0){
-		        	for(j=0; j<result.length; j++){
-		        		results.push(result[j]);	
-		        	}		            
-		        }
-		    }
-		    return results;		
-		},		
+			for ( i = 0; i < slides.length; i++) {
+				var result = slides.models[i].get("components").where(values);
+				if (result.length > 0) {
+					for ( j = 0; j < result.length; j++) {
+						results.push(result[j]);
+					}
+				}
+			}
+			return results;
+		},
 	});
 
 	//Define a collection to store the component objects
@@ -68,50 +57,49 @@ define(["Theme",
 		model : ComponentModel,
 		url : "components",
 		// initialize : function() {
-			// this.on("add", function() {
-				// console.log("added new Component");
-				// if(!is_anonymous){
-					// if ( typeof (this.last().id) == "undefined") {
-						// this.last().save();
-					// }					
-				// }
-			// });
+		// this.on("add", function() {
+		// console.log("added new Component");
+		// if(!is_anonymous){
+		// if ( typeof (this.last().id) == "undefined") {
+		// this.last().save();
+		// }
+		// }
+		// });
 		// },
 	});
 
 	//Load themes list
 	Theme.loadList();
-	
+
 	//Create a slide collection
 	slides = new SlideCollection();
-	
+
 	//Create a component collection
 	components = new ComponentCollection();
 
-	if(!is_anonymous){
+	if (!is_anonymous) {
 		// Start listening websocket events from server to client
 		Collaborative.initWebsocketEvents();
 		Chat.initWebsocketEvents();
 		Slide.initWebsocketEvents();
-		Component.initWebsocketEvents();		
+		Component.initWebsocketEvents();
 	}
 
 	impress().init();
 
-	// // It keeps all the slides visible with an opacity of 1 
+	// // It keeps all the slides visible with an opacity of 1
 	// document.body.classList.remove("impress-enabled");
 
 	Slide.loadAll();
-	
+
 	// If a theme was set and the user is anonymous, load the theme from local web storage
-	if(localStorage.theme != undefined){
+	if (localStorage.theme != undefined) {
 		Theme.set(localStorage.theme);
 	}
 
-	if(is_anonymous){
-		Slide.saveAllToLocalStorage();	
+	if (is_anonymous) {
+		Slide.saveAllToLocalStorage();
 	}
-
 
 	//EVENTS
 
@@ -164,7 +152,7 @@ define(["Theme",
 	//Add new title
 	$("#btn-add-title").on("click", function(event) {
 		Component.insert({
-			"type": "text",
+			"type" : "text",
 			"text_type" : "title",
 			"pos_x" : clicked_inside_slide_point.left,
 			"pos_y" : clicked_inside_slide_point.top,
@@ -175,7 +163,7 @@ define(["Theme",
 	//Add new subtitle
 	$("#btn-add-subtitle").on("click", function() {
 		Component.insert({
-			"type": "text",
+			"type" : "text",
 			"text_type" : "subtitle",
 			"pos_x" : clicked_inside_slide_point.left,
 			"pos_y" : clicked_inside_slide_point.top,
@@ -186,7 +174,7 @@ define(["Theme",
 	//Add new body
 	$("#btn-add-body").on("click", function() {
 		Component.insert({
-			"type": "text",
+			"type" : "text",
 			"text_type" : "body",
 			"pos_x" : clicked_inside_slide_point.left,
 			"pos_y" : clicked_inside_slide_point.top,
@@ -246,6 +234,6 @@ define(["Theme",
 
 	$("#btn-preview-presentation").on("click", Mode.goToPreviewMode);
 	$("#btn-exit-preview-mode").on("click", Mode.exitFromPreviewMode);
-	
+
 	$("#image-url").on("paste", ImageComp.onPasteURL);
 });

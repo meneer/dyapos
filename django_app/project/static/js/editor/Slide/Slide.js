@@ -357,7 +357,7 @@ define(["Component", "Mode", "SlideModel", "module", "exports"], function(Compon
 		var movement = 7;
 
 		//get the difference from last position to this position
-		var deltaX = last_x - event.clientX
+		var deltaX = last_x - event.clientX;
 		var deltaY = last_y - event.clientY;
 
 		//check which direction had the highest amplitude and then figure out direction by checking if the value is greater or less than zero
