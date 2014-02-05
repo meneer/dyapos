@@ -10,8 +10,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-05 14:59-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: meneer <meneer@pod.orkz.net>\n"
+"Language-Team: Dutch <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,582 +20,582 @@ msgstr ""
 
 #: forms/presentation.py:10
 msgid "is_private"
-msgstr ""
+msgstr "Privé"
 
 #: forms/presentation.py:22
 msgid "option_allow_edit"
-msgstr ""
+msgstr "Bewerken toestaan"
 
 #: forms/presentation.py:22
 msgid "option_view_only"
-msgstr ""
+msgstr "Alleen bekijken"
 
 #: forms/user.py:21 forms/user.py:74
 msgid "error_passwords_dont_match"
-msgstr ""
+msgstr "Wachtwoorden niet gelijk"
 
 #: forms/user.py:25
 msgid "error_email_already_registered"
-msgstr ""
+msgstr "E-mailadres is al in gebruik"
 
 #: forms/user.py:43
 msgid "error_user_or_password_incorrect"
-msgstr ""
+msgstr Gebruikersnaam of wachtwoord onjuist"
 
 #: forms/user.py:47
 msgid "error_account_not_activated"
-msgstr ""
+msgstr "Account is nog niet geactiveerd"
 
 #: forms/user.py:59
 msgid "error_email_not_registered"
-msgstr ""
+msgstr "E-mailadres niet geregistreerd"
 
 #: templates/change_password.html:11
 msgid "title_change_password"
-msgstr ""
+msgstr "Wijzigen wachtwoord"
 
 #: templates/change_password.html:19
 msgid "lbl_old_password"
-msgstr ""
+msgstr "Oude wachtwoord"
 
 #: templates/change_password.html:22
 msgid "lbl_new_password"
-msgstr ""
+msgstr "Nieuwe wachtwoord"
 
 #: templates/change_password.html:25
 msgid "lbl_repeat_new_password"
-msgstr ""
+msgstr "Herhaal nieuwe wachtwoord"
 
 #: templates/change_password.html:28 templates/profile.html:37
 msgid "btn_change_password"
-msgstr ""
+msgstr "Wijzigen wachtwoord"
 
 #: templates/edit.html:34
 msgid "btn_new_title"
-msgstr ""
+msgstr "Nieuwe titel"
 
 #: templates/edit.html:35
 msgid "btn_new_subtitle"
-msgstr ""
+msgstr "Nieuwe subtitel"
 
 #: templates/edit.html:36
 msgid "btn_new_body"
-msgstr ""
+msgstr "Nieuwe body"
 
 #: templates/edit.html:51
 msgid "tt_btn_add_slide"
-msgstr ""
+msgstr "Nieuwe dia"
 
 #: templates/edit.html:55
 msgid "tt_btn_navigation_mode"
-msgstr ""
+msgstr "Navigatiemodus"
 
 #: templates/edit.html:59
 msgid "tt_btn_back_edit_mode"
-msgstr ""
+msgstr "Bewerkmodus"
 
 #: templates/edit.html:61
 msgid "btn_back_edit_mode"
-msgstr ""
+msgstr "Bewerkmodus"
 
 #: templates/edit.html:66
 msgid "tt_btn_preview"
-msgstr ""
+msgstr "Voorbeeld"
 
 #: templates/edit.html:72
 msgid "themes"
-msgstr ""
+msgstr "Thema's"
 
 #: templates/edit.html:79
 msgid "share"
-msgstr ""
+msgstr "Delen"
 
 #: templates/edit.html:86
 msgid "download"
-msgstr ""
+msgstr "Downloaden"
 
 #: templates/edit.html:92
 msgid "exit"
-msgstr ""
+msgstr "Afsluiten"
 
 #: templates/edit.html:112
 msgid "send_message"
-msgstr ""
+msgstr "Verstuur bericht"
 
 #: templates/edit.html:125 templates/edit.html.py:306 templates/home.html:90
 msgid "tt_btn_edit"
-msgstr ""
+msgstr "Bewerken"
 
 #: templates/edit.html:132
 msgid "lbl_size"
-msgstr ""
+msgstr "Afmetingen"
 
 #: templates/edit.html:139
 msgid "tt_rotate_z"
-msgstr ""
+msgstr "Roteren_z"
 
 #: templates/edit.html:140
 msgid "tt_rotate_x"
-msgstr ""
+msgstr "Roteren_x"
 
 #: templates/edit.html:141
 msgid "tt_rotate_y"
-msgstr ""
+msgstr "Roteren_y"
 
 #: templates/edit.html:146 templates/edit.html.py:309 templates/edit.html:324
 #: templates/edit.html.py:344 templates/home.html:95
 msgid "tt_btn_delete"
-msgstr ""
+msgstr "Verwijderen"
 
 #: templates/edit.html:156
 msgid "tt_btn_add_title"
-msgstr ""
+msgstr "Toevoegen titel"
 
 #: templates/edit.html:157
 msgid "btn_title"
-msgstr ""
+msgstr "Titel"
 
 #: templates/edit.html:159
 msgid "tt_btn_add_subtitle"
-msgstr ""
+msgstr "Toevoegen subtitel"
 
 #: templates/edit.html:160
 msgid "btn_subtitle"
-msgstr ""
+msgstr "Subtitel"
 
 #: templates/edit.html:162
 msgid "tt_btn_add_paragraph"
-msgstr ""
+msgstr "Toevoegen paragraaf"
 
 #: templates/edit.html:163
 msgid "btn_body"
-msgstr ""
+msgstr "Body"
 
 #: templates/edit.html:165
 msgid "tt_btn_add_image"
-msgstr ""
+msgstr "Toevoegen afbeelding"
 
 #: templates/edit.html:168
 msgid "tt_btn_add_video"
-msgstr ""
+msgstr "Toevoegen video"
 
 #: templates/edit.html:177 templates/edit.html.py:201
 msgid "tt_increase_size"
-msgstr ""
+msgstr "Vergroten afmetingen"
 
 #: templates/edit.html:178 templates/edit.html.py:202
 msgid "tt_decrease_size"
-msgstr ""
+msgstr "Verkleinen afmetingen"
 
 #: templates/edit.html:179
 msgid "tt_toggle_bold"
-msgstr ""
+msgstr "Switchen vet"
 
 #: templates/edit.html:182
 msgid "tt_toggle_underline"
-msgstr ""
+msgstr "Switchen onderstreept"
 
 #: templates/edit.html:185
 msgid "tt_toggle_italic"
-msgstr ""
+msgstr "Switchen schuin"
 
 #: templates/edit.html:188
 msgid "tt_transform_to_link"
-msgstr ""
+msgstr "Veranderen in link"
 
 #: templates/edit.html:191
 msgid "tt_change_color"
-msgstr ""
+msgstr "Wijzigen kleur"
 
 #: templates/edit.html:209
 msgid "title_add_image"
-msgstr ""
+msgstr "Toevoegen afbeelding"
 
 #: templates/edit.html:211
 msgid "lbl_load_image_file"
-msgstr ""
+msgstr "Laden afbeeldingenbestand"
 
 #: templates/edit.html:213 templates/index.html:73
 msgid "lbl_or"
-msgstr ""
+msgstr "of"
 
 #: templates/edit.html:215
 msgid "lbl_load_image_url"
-msgstr ""
+msgstr "Laden afbeeldingsurl"
 
 #: templates/edit.html:217
 msgid "btn_upload"
-msgstr ""
+msgstr "Uploaden"
 
 #: templates/edit.html:226
 msgid "title_add_video"
-msgstr ""
+msgstr "Toevoegen video"
 
 #: templates/edit.html:229 templates/edit.html.py:235
 msgid "btn_add"
-msgstr ""
+msgstr "Toevoegen"
 
 #: templates/edit.html:272
 msgid "btn_cancel"
-msgstr ""
+msgstr "Annuleren"
 
 #: templates/edit.html:293
 msgid "tt_slide_mini_sort"
-msgstr ""
+msgstr "Sorteren mini"
 
 #: templates/home.html:15
 msgid "tt_btn_create_presentation"
-msgstr ""
+msgstr "Creëren presentatie"
 
 #: templates/home.html:17
 msgid "btn_create_new"
-msgstr ""
+msgstr "Creëren nieuw"
 
 #: templates/home.html:21
 msgid "tt_view_all"
-msgstr ""
+msgstr "Bekijk alles"
 
 #: templates/home.html:21
 msgid "btn_all"
-msgstr ""
+msgstr "Alles"
 
 #: templates/home.html:25
 msgid "tt_view_own"
-msgstr ""
+msgstr "Bekijk eigen"
 
 #: templates/home.html:25
 msgid "btn_own"
-msgstr ""
+msgstr "Eigen"
 
 #: templates/home.html:29
 msgid "tt_view_shared"
-msgstr ""
+msgstr "Bekijken gedeeld"
 
 #: templates/home.html:29
 msgid "btn_shared"
-msgstr ""
+msgstr "Gedeeld"
 
 #: templates/home.html:37
 msgid "lbl_search"
-msgstr ""
+msgstr "Zoeken"
 
 #: templates/home.html:38
 msgid "tt_input_search"
-msgstr ""
+msgstr "Invoeren zoektermen"
 
 #: templates/home.html:56
 msgid "lbl_name"
-msgstr ""
+msgstr "Naam"
 
 #: templates/home.html:58
 msgid "lbl_description"
-msgstr ""
+msgstr "Beschrijving"
 
 #: templates/home.html:58
 msgid "lbl_optional_message"
-msgstr ""
+msgstr "Optionele mededeling"
 
 #: templates/home.html:61
 msgid "tt_private_info"
-msgstr ""
+msgstr "Privé info"
 
 #: templates/home.html:67
 msgid "btn_create_presentation"
-msgstr ""
+msgstr "Creëren presentatie"
 
 #: templates/home.html:85
 msgid "tt_btn_view"
-msgstr ""
+msgstr "Bekijken"
 
 #: templates/index.html:19 templates/login.html:26
 msgid "btn_login"
-msgstr ""
+msgstr "Inloggen"
 
 #: templates/index.html:32
 msgid "slide_welcome"
-msgstr ""
+msgstr "Welkom"
 
 #: templates/index.html:36
 msgid "slide_create_and_share"
-msgstr ""
+msgstr "Creëren en delen"
 
 #: templates/index.html:40
 msgid "slide_effects"
-msgstr ""
+msgstr "Effecten"
 
 #: templates/index.html:43
 msgid "slide_collaborative"
-msgstr ""
+msgstr "Samenwerking"
 
 #: templates/index.html:47
 msgid "slide_html5_css3"
-msgstr ""
+msgstr "Html5 CCS3"
 
 #: templates/index.html:51
 msgid "slide_no_flash"
-msgstr ""
+msgstr "Geen Flash"
 
 #: templates/index.html:55
 msgid "slide_any_device"
-msgstr ""
+msgstr "Elk_apparaat"
 
 #: templates/index.html:59
 msgid "slide_download"
-msgstr ""
+msgstr "Downloaden"
 
 #: templates/index.html:68
 msgid "tt_get_started"
-msgstr ""
+msgstr "Beginnen"
 
 #: templates/index.html:68
 msgid "get_started"
-msgstr ""
+msgstr "Beginnen"
 
 #: templates/index.html:68
 msgid "no_registration"
-msgstr ""
+msgstr "Geen registratie"
 
 #: templates/index.html:78
 msgid "tt_signup"
-msgstr ""
+msgstr "Registreren"
 
 #: templates/index.html:78 templates/login.html:29
 msgid "link_signup"
-msgstr ""
+msgstr "Registreren"
 
 #: templates/index.html:90
 msgid "search_presentations"
-msgstr ""
+msgstr "Zoeken presentaties"
 
 #: templates/index.html:102
 msgid "featured_presentations"
-msgstr ""
+msgstr "Voorbeeldpresentatie"
 
 #: templates/index.html:105
 msgid "search_results"
-msgstr ""
+msgstr "Zoekresultaten"
 
 #: templates/index.html:140
 msgid "collaborate_with_us_on"
-msgstr ""
+msgstr "Werk met ons samen op"
 
 #: templates/login.html:12
 msgid "title_login"
-msgstr ""
+msgstr "Inloggen"
 
 #: templates/login.html:16 templates/profile.html:25 templates/signup.html:23
 #: templates/elements/share_form.html:11 templates/elements/share_form.html:34
 msgid "lbl_email"
-msgstr ""
+msgstr "E-mail"
 
 #: templates/login.html:19 templates/signup.html:26
 msgid "lbl_password"
-msgstr ""
+msgstr "Wachtwoord"
 
 #: templates/login.html:23
 msgid "link_forgot_password"
-msgstr ""
+msgstr "Wachtwoord vergeten"
 
 #: templates/login.html:29
 msgid "txt_dont_have_account"
-msgstr ""
+msgstr "heb geen account"
 
 #: templates/presentation.html:17
 msgid "tt_rename"
-msgstr ""
+msgstr "Hernoemen"
 
 #: templates/presentation.html:20 templates/presentation.html.py:163
 msgid "btn_rename"
-msgstr ""
+msgstr "Hernoemen"
 
 #: templates/presentation.html:31
 msgid "tt_modify_description"
-msgstr ""
+msgstr "Wijzigen beschrijving"
 
 #: templates/presentation.html:34
 msgid "btn_modify_description"
-msgstr ""
+msgstr "Wijzigen beschrijving"
 
 #: templates/presentation.html:42
 msgid "created_date"
-msgstr ""
+msgstr "Aanmaakdatum"
 
 #: templates/presentation.html:50
 msgid "link_present"
-msgstr ""
+msgstr "Huidige"
 
 #: templates/presentation.html:55
 msgid "link_edit"
-msgstr ""
+msgstr "Bewerken"
 
 #: templates/presentation.html:61
 msgid "link_copy"
-msgstr ""
+msgstr "Kopiëren"
 
 #: templates/presentation.html:67
 msgid "link_share"
-msgstr ""
+msgstr "Delen"
 
 #: templates/presentation.html:72
 msgid "link_download"
-msgstr ""
+msgstr "Downloaden"
 
 #: templates/presentation.html:76
 msgid "link_embed"
-msgstr ""
+msgstr "Inbedden"
 
 #: templates/presentation.html:82
 msgid "tt_like"
-msgstr ""
+msgstr "Leuk vinden"
 
 #: templates/presentation.html:96
 msgid "title_comments"
-msgstr ""
+msgstr "Reacties"
 
 #: templates/presentation.html:108
 msgid "delete"
-msgstr ""
+msgstr "Verwijderen"
 
 #: templates/presentation.html:123
 msgid "lbl_comment"
-msgstr ""
+msgstr "Reacties"
 
 #: templates/presentation.html:127
 msgid "btn_comment"
-msgstr ""
+msgstr "Reageren"
 
 #: templates/presentation.html:140
 msgid "title_embed_to_webpage"
-msgstr ""
+msgstr "Inbedden in webpagina"
 
 #: templates/presentation.html:149
 msgid "lbl_width"
-msgstr ""
+msgstr "Breedte"
 
 #: templates/presentation.html:151
 msgid "lbl_height"
-msgstr ""
+msgstr "Hoogte"
 
 #: templates/presentation.html:159
 msgid "title_rename_presentation"
-msgstr ""
+msgstr "Hernoemen presentatis"
 
 #: templates/presentation.html:170
 msgid "title_modify_description"
-msgstr ""
+msgstr "Wijzigen beschrijving"
 
 #: templates/presentation.html:174
 msgid "btn_save"
-msgstr ""
+msgstr "Bewaren"
 
 #: templates/profile.html:12
 msgid "title_profile"
-msgstr ""
+msgstr "Profiel"
 
 #: templates/profile.html:19 templates/signup.html:17
 msgid "lbl_first_name"
-msgstr ""
+msgstr "Voornaam"
 
 #: templates/profile.html:22 templates/signup.html:20
 msgid "lbl_last_name"
-msgstr ""
+msgstr "Achternaam"
 
 #: templates/profile.html:30
 msgid "btn_update_profile"
-msgstr ""
+msgstr "Bijwerken profiel"
 
 #: templates/profile.html:40
 msgid "btn_delete_account"
-msgstr ""
+msgstr "Verwijderen account"
 
 #: templates/profile.html:49
 msgid "msg_delete_account"
-msgstr ""
+msgstr "Verwijderen account"
 
 #: templates/profile.html:52
 msgid "msg_delete_account_cannot_be_undone"
-msgstr ""
+msgstr "Verwijderen account kan niet ongedaan worden gemaakt"
 
 #: templates/profile.html:54
 msgid "btn_cancel_delete_account"
-msgstr ""
+msgstr "Annuleren verwijderen account"
 
 #: templates/profile.html:55
 msgid "btn_accept_delete_account"
-msgstr ""
+msgstr "Verwijderen account"
 
 #: templates/recover_password.html:12
 msgid "title_recover_password"
-msgstr ""
+msgstr "Herstellen wachtwoord"
 
 #: templates/recover_password.html:20
 msgid "lbl_enter_your_email"
-msgstr ""
+msgstr "Voor je e-mailadres in"
 
 #: templates/recover_password.html:24
 msgid "btn_send_recover_email"
-msgstr ""
+msgstr "Versturen wachtwoordherstel e-mail"
 
 #: templates/signup.html:11
 msgid "title_signup"
-msgstr ""
+msgstr "Aanmelden"
 
 #: templates/signup.html:29
 msgid "lbl_repeat_password"
-msgstr ""
+msgstr "Herhaal wachtwoord"
 
 #: templates/signup.html:33
 msgid "btn_register"
-msgstr ""
+msgstr "Aanmelden"
 
 #: templates/view.html:16
 msgid "fallback-message"
-msgstr ""
+msgstr "Terugval bericht"
 
 #: templates/view.html:100
 msgid "presentation_hint"
-msgstr ""
+msgstr "Presentatie tip"
 
 #: templates/view.html:104
 msgid "presentation_hint_touch"
-msgstr ""
+msgstr "Presentatie hint touch"
 
 #: templates/elements/main_panel.html:5
 msgid "tt_home"
-msgstr ""
+msgstr "Startpagina"
 
 #: templates/elements/main_panel.html:7
 msgid "menu_home"
-msgstr ""
+msgstr "Starten"
 
 #: templates/elements/main_panel.html:11
 msgid "tt_profile"
-msgstr ""
+msgstr "Profiel"
 
 #: templates/elements/main_panel.html:13
 msgid "menu_profile"
-msgstr ""
+msgstr "Profiel"
 
 #: templates/elements/main_panel.html:17
 msgid "tt_logout"
-msgstr ""
+msgstr "Uitloggen"
 
 #: templates/elements/main_panel.html:17
 msgid "menu_logout"
-msgstr ""
+msgstr "Uitloggen"
 
 #: templates/elements/share_form.html:26
 msgid "tt_btn_add_collaborator"
-msgstr ""
+msgstr "Toevoegen deelnemer"
 
 #: templates/elements/share_form.html:26
 msgid "btn_add_collaborator"
-msgstr ""
+msgstr "Toevoegen deelnemer"
 
 #: templates/elements/share_form.html:47
 msgid "btn_share"
-msgstr ""
+msgstr "Delen"
 
 #: views/presentations.py:196
 msgid "text_copy_of"
-msgstr ""
+msgstr "kopie van"
